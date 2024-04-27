@@ -1,15 +1,21 @@
 from antlr4 import InputStream
 from antlr4 import CommonTokenStream
-import gen
-from gen.HelloLexer import HelloLexer
-from gen.HelloParser import HelloParser
+from gen.PythonStaticTypingLexer import PythonStaticTypingLexer
+from gen.PythonStaticTypingParser import PythonStaticTypingParser
 
-input_text = input("> ")
+# Input text to parse
+input_text = "if x == 5:\n    print('x is 5')"
+
+# Create an input stream
 input_stream = InputStream(input_text)
-lexer = HelloLexer(input_stream)
-stream = CommonTokenStream(lexer)
-parser = HelloParser(stream)
 
-tree = parser.r()
+# Create a lexer
+lexer = PythonStaticTypingLexer(input_stream)
 
-print(tree.toStringTree(recog=parser))
+# Create a token stream
+token_stream = CommonTokenStream(lexer)
+
+# Print out tokens
+token_stream.fill()
+for token in token_stream.tokens:
+    print(token)
