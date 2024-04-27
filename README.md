@@ -16,67 +16,78 @@
 </ul>
 
 ## Tokeny
-1. IDENTIFIER: [a-zA-z_][a-zA-Z0-9_]*
-2. NUMBER: -?(?:0|[1-9]\d*)(?:\.\d+)?(?:[eE][+-]?\d+)?
-3. STRING: \"(?:\\.|[^\"\\])*\"|\'(?:\\.|[^\'\\])*\'
-4. INDENT: Wykorzystywane w parserach, nie jest reprezentowane jako token w źródle kodu
-5. DEDENT: Wykorzystywane w parserach, nie jest reprezentowane jako token w źródle kodu.
-6. NEWLINE: \n|\r\n?
-7. COLON: ":"
-8. COMMA: ","
-9. SEMI: ";"
-10. PLUS: "+"
-11. MINUS: "-"
-12. STAR: "*"
-13. SLASH: "/"
-14. VBAR: "|"
-15. AMPERSANT: "&"
-16. LESS: "<"
-17. GREATER: ">"
-18. EQUAL: "="
-19. DOT: "."
-20. PERCENT: "%"
-21. EQEQUAL: "=="
-22. NOTEQUAL: "!="
-23. LESSEQUAL: "<="
-24. GREATEREQUAL: ">="
-25. TILDE: "~"
-26. PLUSEQUAL: "+="
-27. MINEQUAL: "-="
-28. STAREQUAL: "*="
-29. SLASHEQUAL: "/="
-30. PERCENTEQUAL: "%="
-31. EXCLAMATION: "!"
-32. NULL: null 
-33. DECIMALINTLITERAL: 0|[1-9]\d*
-34. KEYWORD: 
-    - 'break' 
-    - 'else'
-    - 'return'
-    - 'continue'
-    - 'def'
-    - 'if'
-    - 'while'
-    - 'for'
-    - 'class'
-35. COMMENT: "#.*"
-36. OPEN_PAREN: OPEN_PAREN: "\ ("
-37. CLOSE_PAREN: CLOSE_PAREN: "\ )"
-38. OPEN_BRACKET: "[ \ "
-39. CLOSE_BRACKET: "\ ]"
-40. OPEN_BRACE: "\ {"
-41. CLOSE_BRACE: "\ }"
-42. TYPE_ANNOTATION: 
-    - INT: "int"
-    - STR: "string"
-    - FLOAT: "float"
-    - COMPLEX: "complex"
-    - BOOLEAN: "true|false"
-    - LIST: "list"
-    - TUPLE: "tuple"
-    - DICT: "dict"
-    - SET: "set"
+```diff
+// Tokens
 
+IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
+NUMBER: '-'? ( '0' | [1-9] [0-9]* ) ( '.' [0-9]+ )? ( [eE] [+-]? [0-9]+ )?;
+STRING: '"' ( '\\' . | ~["\\] )* '"' | '\'' ( '\\' . | ~['\\] )* '\'';
+NEWLINE: '\r'? '\n';
+COLON: ':';
+COMMA: ',';
+SEMI: ';';
+PLUS: '+';
+MINUS: '-';
+STAR: '*';
+SLASH: '/';
+VBAR: '|';
+AMPERSANT: '&';
+LESS: '<';
+GREATER: '>';
+EQUAL: '=';
+DOT: '.';
+PERCENT: '%';
+EQEQUAL: '==';
+NOTEQUAL: '!=';
+LESSEQUAL: '<=';
+GREATEREQUAL: '>=';
+TILDE: '~';
+PLUSEQUAL: '+=';
+MINEQUAL: '-=';
+STAREQUAL: '*=';
+SLASHEQUAL: '/=';
+PERCENTEQUAL: '%=';
+EXCLAMATION: '!';
+NULL: 'null';
+DECIMALINTLITERAL: '0' | [1-9] [0-9]*;
+
+// Keywords
+
+BREAK: 'break';
+ELSE: 'else';
+RETURN: 'return';
+CONTINUE: 'continue';
+DEF: 'def';
+IF: 'if';
+WHILE: 'while';
+FOR: 'for';
+CLASS: 'class';
+
+// Comments
+
+COMMENT: '#' ~[\r\n]* -> skip;
+
+// Delimiters
+
+OPEN_PAREN: '(';
+CLOSE_PAREN: ')';
+OPEN_BRACKET: '[';
+CLOSE_BRACKET: ']';
+OPEN_BRACE: '{';
+CLOSE_BRACE: '}';
+
+// Type annotations
+
+INT: 'int';
+STR: 'string';
+FLOAT: 'float';
+COMPLEX: 'complex';
+BOOLEAN: 'true' | 'false';
+LIST: 'list';
+TUPLE: 'tuple';
+DICT: 'dict';
+SET: 'set';
+```
 ## Gramatyka
 ```diff
 program : statements EOF
