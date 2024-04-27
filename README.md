@@ -148,4 +148,18 @@ NEWLINE: '\r'? '\n' -> skip;
 
 WS: [ \t]+ -> skip;
 ```
+## How to use 
 
+### Useful links: 
+<details>
+<ul>
+    <li><a href="https://ati.ttu.ee/~kjans/antlr/pycharm_antlr4_guide.pdf">PyCharm ANTLR4 Guide</a></li>
+    <li><a href="https://www.antlr.org/download.html">Download ANTLR</a></li>
+    <li><a href="https://yetanotherprogrammingblog.medium.com/antlr-with-python-974c756bdb1b">ANTLR with Python</a></li>
+    <li><a href="https://github.com/antlr/antlr4/blob/master/doc/tool-options.md">ANTLR Tool Command Line Options</a></li>
+    <li><a href="https://github.com/jszheng/py3antlr4book/blob/master/README.md">py3antlr4book</a></li>
+    <li><a href="https://github.com/antlr/antlr4/blob/master/doc/python-target.md">Python 3 - Antlr4</a></li>
+</ul>
+</details>
+
+## TBA
