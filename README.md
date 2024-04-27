@@ -32,7 +32,7 @@ MINUS: '-';
 STAR: '*';
 SLASH: '/';
 VBAR: '|';
-AMPERSAND: '&'; // Fixed token name
+AMPERSAND: '&'; 
 LESS: '<';
 GREATER: '>';
 EQUAL: '=';
@@ -80,7 +80,7 @@ INT: 'int';
 STR: 'string';
 FLOAT: 'float';
 COMPLEX: 'complex';
-BOOLEAN: ('True' | 'False'); // Fixed token names
+BOOLEAN: ('True' | 'False'); 
 LIST: 'list';
 TUPLE: 'tuple';
 DICT: 'dict';
