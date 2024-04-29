@@ -17,7 +17,6 @@
 
 ## Tokeny
 ```g4
-// Lexer Rules
 // Tokes
 NUMBER: '-'? ( '0' | [1-9] [0-9]* ) ( '.' [0-9]+ )? ( ('e' | 'E') [+-]? [0-9]+ )?;
 STRING: '"' ( '\\' . | ~["\\] )* '"' | '\'' ( '\\' . | ~['\\] )* '\'';
@@ -31,7 +30,7 @@ MINUS: '-';
 STAR: '*';
 SLASH: '/';
 VBAR: '|';
-AMPERSAND: '&'; // Fixed token name
+AMPERSAND: '&'; 
 LESS: '<';
 GREATER: '>';
 EQUAL: '=';
@@ -78,7 +77,7 @@ INT: 'int';
 STR: 'str';
 FLOAT: 'float';
 COMPLEX: 'complex';
-BOOLEAN: ('True' | 'False'); // Fixed token names
+BOOLEAN: ('True' | 'False'); 
 LIST: 'list';
 TUPLE: 'tuple';
 DICT: 'dict';
