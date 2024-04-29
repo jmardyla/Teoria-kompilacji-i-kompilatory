@@ -9,7 +9,7 @@
 
 ## Założenia Projektu 
 <ul>
-    <li>Stworzenie interpretera języka Python ze statycznym typowaniem</li>
+    <li>Stworzenie interpretera języka Python ze statycznym typowaniem oraz dodanymi nawiasami klamrowymi "{}" zastępującymi wcięcia kodu</li>
     <li>Rodzaj translatora: Interpreter</li>
     <li>Język implementaji: Python</li>
     <li>Wykorzystywany generator parserów: ANTLR</li>
