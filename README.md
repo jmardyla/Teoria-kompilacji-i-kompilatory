@@ -110,8 +110,6 @@ function_statement: expression_statement
          | if_statement
          | while_statement
          | for_statement
-         | function_definition
-         | class_definition
          | COMMENT
          | return_statement;
 
@@ -123,9 +121,9 @@ if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
 while_statement : WHILE expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE statement?;
+for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statement (NEWLINE function_statement)* NEWLINE? CLOSE_BRACE statement?;
+function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statement (NEWLINE function_statement)* NEWLINE? CLOSE_BRACE;
 
 expression_list : expression (COMMA expression)*;
 
