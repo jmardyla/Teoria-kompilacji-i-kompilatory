@@ -1,4 +1,4 @@
-# Generated from C:/Users/agamm/PythonInterpreter/PythonStaticTyping.g4 by ANTLR 4.13.1
+# Generated from C:/Users/janek/PycharmProjects/tkik/PythonStaticTyping.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .PythonStaticTypingParser import PythonStaticTypingParser
@@ -21,6 +21,11 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PythonStaticTypingParser#statement.
     def visitStatement(self, ctx:PythonStaticTypingParser.StatementContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PythonStaticTypingParser#function_statement.
+    def visitFunction_statement(self, ctx:PythonStaticTypingParser.Function_statementContext):
         return self.visitChildren(ctx)
 
 
@@ -54,6 +59,11 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by PythonStaticTypingParser#expression_list.
+    def visitExpression_list(self, ctx:PythonStaticTypingParser.Expression_listContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by PythonStaticTypingParser#typed_parameters.
     def visitTyped_parameters(self, ctx:PythonStaticTypingParser.Typed_parametersContext):
         return self.visitChildren(ctx)
@@ -66,16 +76,6 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PythonStaticTypingParser#class_definition.
     def visitClass_definition(self, ctx:PythonStaticTypingParser.Class_definitionContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PythonStaticTypingParser#break_statement.
-    def visitBreak_statement(self, ctx:PythonStaticTypingParser.Break_statementContext):
-        return self.visitChildren(ctx)
-
-
-    # Visit a parse tree produced by PythonStaticTypingParser#continue_statement.
-    def visitContinue_statement(self, ctx:PythonStaticTypingParser.Continue_statementContext):
         return self.visitChildren(ctx)
 
 
@@ -96,6 +96,16 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PythonStaticTypingParser#primary.
     def visitPrimary(self, ctx:PythonStaticTypingParser.PrimaryContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PythonStaticTypingParser#function_call.
+    def visitFunction_call(self, ctx:PythonStaticTypingParser.Function_callContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by PythonStaticTypingParser#type.
+    def visitType(self, ctx:PythonStaticTypingParser.TypeContext):
         return self.visitChildren(ctx)
 
 

@@ -1,4 +1,4 @@
-# Generated from C:/Users/agamm/PythonInterpreter/PythonStaticTyping.g4 by ANTLR 4.13.1
+# Generated from C:/Users/janek/PycharmProjects/tkik/PythonStaticTyping.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .PythonStaticTypingParser import PythonStaticTypingParser
@@ -32,6 +32,15 @@ class PythonStaticTypingListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonStaticTypingParser#statement.
     def exitStatement(self, ctx:PythonStaticTypingParser.StatementContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonStaticTypingParser#function_statement.
+    def enterFunction_statement(self, ctx:PythonStaticTypingParser.Function_statementContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#function_statement.
+    def exitFunction_statement(self, ctx:PythonStaticTypingParser.Function_statementContext):
         pass
 
 
@@ -89,6 +98,15 @@ class PythonStaticTypingListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PythonStaticTypingParser#expression_list.
+    def enterExpression_list(self, ctx:PythonStaticTypingParser.Expression_listContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#expression_list.
+    def exitExpression_list(self, ctx:PythonStaticTypingParser.Expression_listContext):
+        pass
+
+
     # Enter a parse tree produced by PythonStaticTypingParser#typed_parameters.
     def enterTyped_parameters(self, ctx:PythonStaticTypingParser.Typed_parametersContext):
         pass
@@ -113,24 +131,6 @@ class PythonStaticTypingListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonStaticTypingParser#class_definition.
     def exitClass_definition(self, ctx:PythonStaticTypingParser.Class_definitionContext):
-        pass
-
-
-    # Enter a parse tree produced by PythonStaticTypingParser#break_statement.
-    def enterBreak_statement(self, ctx:PythonStaticTypingParser.Break_statementContext):
-        pass
-
-    # Exit a parse tree produced by PythonStaticTypingParser#break_statement.
-    def exitBreak_statement(self, ctx:PythonStaticTypingParser.Break_statementContext):
-        pass
-
-
-    # Enter a parse tree produced by PythonStaticTypingParser#continue_statement.
-    def enterContinue_statement(self, ctx:PythonStaticTypingParser.Continue_statementContext):
-        pass
-
-    # Exit a parse tree produced by PythonStaticTypingParser#continue_statement.
-    def exitContinue_statement(self, ctx:PythonStaticTypingParser.Continue_statementContext):
         pass
 
 
@@ -167,6 +167,24 @@ class PythonStaticTypingListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonStaticTypingParser#primary.
     def exitPrimary(self, ctx:PythonStaticTypingParser.PrimaryContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonStaticTypingParser#function_call.
+    def enterFunction_call(self, ctx:PythonStaticTypingParser.Function_callContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#function_call.
+    def exitFunction_call(self, ctx:PythonStaticTypingParser.Function_callContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonStaticTypingParser#type.
+    def enterType(self, ctx:PythonStaticTypingParser.TypeContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#type.
+    def exitType(self, ctx:PythonStaticTypingParser.TypeContext):
         pass
 
 
