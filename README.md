@@ -160,6 +160,22 @@ type : INT
      | DICT
      | SET;
 ```
+## Example parse tree
+```
+print('Hello world')
+
+def do_something(param: str, num: int) -> int {
+    for i in range(num) {
+        print(param)
+    }
+    return num
+}
+
+result: int = do_something('test', 3)
+
+```
+![Example parse tree picture](/assets/example_parse_tree.png)
+
 ## How to use 
 
 ### Useful links: 
