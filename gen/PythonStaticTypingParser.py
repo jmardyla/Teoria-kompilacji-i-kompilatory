@@ -10,84 +10,81 @@ else:
 
 def serializedATN():
     return [
-        4,1,61,222,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
+        4,1,61,216,2,0,7,0,2,1,7,1,2,2,7,2,2,3,7,3,2,4,7,4,2,5,7,5,2,6,7,
         6,2,7,7,7,2,8,7,8,2,9,7,9,2,10,7,10,2,11,7,11,2,12,7,12,2,13,7,13,
         2,14,7,14,2,15,7,15,2,16,7,16,2,17,7,17,2,18,7,18,1,0,1,0,1,0,1,
         1,5,1,43,8,1,10,1,12,1,46,9,1,1,1,1,1,4,1,50,8,1,11,1,12,1,51,1,
         1,5,1,55,8,1,10,1,12,1,58,9,1,1,1,5,1,61,8,1,10,1,12,1,64,9,1,1,
         2,1,2,1,2,1,2,1,2,1,2,1,2,1,2,3,2,74,8,2,1,3,1,3,1,3,1,3,1,3,1,3,
-        1,3,1,3,1,3,3,3,85,8,3,1,4,1,4,3,4,89,8,4,1,5,1,5,1,5,1,5,1,5,1,
-        5,3,5,97,8,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,
-        1,7,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,3,8,122,8,8,1,9,1,9,1,9,
-        1,9,3,9,128,8,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,138,8,9,10,9,
-        12,9,141,9,9,1,9,3,9,144,8,9,1,9,1,9,3,9,148,8,9,1,10,1,10,1,10,
-        5,10,153,8,10,10,10,12,10,156,9,10,1,11,1,11,1,11,5,11,161,8,11,
-        10,11,12,11,164,9,11,1,12,1,12,1,12,1,12,1,13,1,13,1,13,1,13,1,13,
-        1,13,3,13,176,8,13,1,13,1,13,1,14,1,14,3,14,182,8,14,1,14,3,14,185,
-        8,14,1,15,1,15,1,15,5,15,190,8,15,10,15,12,15,193,9,15,1,16,1,16,
-        1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,
-        1,16,3,16,211,8,16,1,17,1,17,1,17,3,17,216,8,17,1,17,1,17,1,18,1,
-        18,1,18,0,0,19,0,2,4,6,8,10,12,14,16,18,20,22,24,26,28,30,32,34,
-        36,0,2,4,0,8,11,13,15,18,22,24,28,1,0,48,56,241,0,38,1,0,0,0,2,44,
-        1,0,0,0,4,73,1,0,0,0,6,84,1,0,0,0,8,86,1,0,0,0,10,90,1,0,0,0,12,
-        98,1,0,0,0,14,105,1,0,0,0,16,112,1,0,0,0,18,123,1,0,0,0,20,149,1,
-        0,0,0,22,157,1,0,0,0,24,165,1,0,0,0,26,169,1,0,0,0,28,179,1,0,0,
-        0,30,186,1,0,0,0,32,210,1,0,0,0,34,212,1,0,0,0,36,219,1,0,0,0,38,
-        39,3,2,1,0,39,40,5,0,0,1,40,1,1,0,0,0,41,43,5,60,0,0,42,41,1,0,0,
-        0,43,46,1,0,0,0,44,42,1,0,0,0,44,45,1,0,0,0,45,47,1,0,0,0,46,44,
-        1,0,0,0,47,56,3,4,2,0,48,50,5,60,0,0,49,48,1,0,0,0,50,51,1,0,0,0,
-        51,49,1,0,0,0,51,52,1,0,0,0,52,53,1,0,0,0,53,55,3,4,2,0,54,49,1,
-        0,0,0,55,58,1,0,0,0,56,54,1,0,0,0,56,57,1,0,0,0,57,62,1,0,0,0,58,
-        56,1,0,0,0,59,61,5,60,0,0,60,59,1,0,0,0,61,64,1,0,0,0,62,60,1,0,
-        0,0,62,63,1,0,0,0,63,3,1,0,0,0,64,62,1,0,0,0,65,74,3,8,4,0,66,74,
-        3,10,5,0,67,74,3,12,6,0,68,74,3,14,7,0,69,74,3,16,8,0,70,74,3,18,
-        9,0,71,74,3,26,13,0,72,74,5,41,0,0,73,65,1,0,0,0,73,66,1,0,0,0,73,
-        67,1,0,0,0,73,68,1,0,0,0,73,69,1,0,0,0,73,70,1,0,0,0,73,71,1,0,0,
-        0,73,72,1,0,0,0,74,5,1,0,0,0,75,85,3,8,4,0,76,85,3,10,5,0,77,85,
-        3,12,6,0,78,85,3,14,7,0,79,85,3,16,8,0,80,85,3,18,9,0,81,85,3,26,
-        13,0,82,85,5,41,0,0,83,85,3,28,14,0,84,75,1,0,0,0,84,76,1,0,0,0,
-        84,77,1,0,0,0,84,78,1,0,0,0,84,79,1,0,0,0,84,80,1,0,0,0,84,81,1,
-        0,0,0,84,82,1,0,0,0,84,83,1,0,0,0,85,7,1,0,0,0,86,88,3,30,15,0,87,
-        89,5,60,0,0,88,87,1,0,0,0,88,89,1,0,0,0,89,9,1,0,0,0,90,91,5,57,
-        0,0,91,92,5,5,0,0,92,93,3,36,18,0,93,94,5,16,0,0,94,96,3,30,15,0,
-        95,97,5,7,0,0,96,95,1,0,0,0,96,97,1,0,0,0,97,11,1,0,0,0,98,99,5,
-        37,0,0,99,100,3,30,15,0,100,101,5,46,0,0,101,102,5,60,0,0,102,103,
-        3,2,1,0,103,104,5,47,0,0,104,13,1,0,0,0,105,106,5,38,0,0,106,107,
-        3,30,15,0,107,108,5,46,0,0,108,109,5,60,0,0,109,110,3,2,1,0,110,
-        111,5,47,0,0,111,15,1,0,0,0,112,113,5,39,0,0,113,114,5,57,0,0,114,
-        115,5,4,0,0,115,116,3,30,15,0,116,117,5,46,0,0,117,118,5,60,0,0,
-        118,119,3,2,1,0,119,121,5,47,0,0,120,122,3,4,2,0,121,120,1,0,0,0,
-        121,122,1,0,0,0,122,17,1,0,0,0,123,124,5,36,0,0,124,125,5,57,0,0,
-        125,127,5,42,0,0,126,128,3,22,11,0,127,126,1,0,0,0,127,128,1,0,0,
-        0,128,129,1,0,0,0,129,130,5,43,0,0,130,131,5,3,0,0,131,132,3,36,
-        18,0,132,133,5,46,0,0,133,134,5,60,0,0,134,139,3,6,3,0,135,136,5,
-        60,0,0,136,138,3,6,3,0,137,135,1,0,0,0,138,141,1,0,0,0,139,137,1,
-        0,0,0,139,140,1,0,0,0,140,143,1,0,0,0,141,139,1,0,0,0,142,144,5,
-        60,0,0,143,142,1,0,0,0,143,144,1,0,0,0,144,145,1,0,0,0,145,147,5,
-        47,0,0,146,148,3,4,2,0,147,146,1,0,0,0,147,148,1,0,0,0,148,19,1,
-        0,0,0,149,154,3,30,15,0,150,151,5,6,0,0,151,153,3,30,15,0,152,150,
-        1,0,0,0,153,156,1,0,0,0,154,152,1,0,0,0,154,155,1,0,0,0,155,21,1,
-        0,0,0,156,154,1,0,0,0,157,162,3,24,12,0,158,159,5,6,0,0,159,161,
-        3,24,12,0,160,158,1,0,0,0,161,164,1,0,0,0,162,160,1,0,0,0,162,163,
-        1,0,0,0,163,23,1,0,0,0,164,162,1,0,0,0,165,166,5,57,0,0,166,167,
-        5,5,0,0,167,168,3,36,18,0,168,25,1,0,0,0,169,170,5,40,0,0,170,171,
-        5,57,0,0,171,172,5,46,0,0,172,173,5,60,0,0,173,175,3,2,1,0,174,176,
-        5,60,0,0,175,174,1,0,0,0,175,176,1,0,0,0,176,177,1,0,0,0,177,178,
-        5,47,0,0,178,27,1,0,0,0,179,181,5,34,0,0,180,182,3,30,15,0,181,180,
-        1,0,0,0,181,182,1,0,0,0,182,184,1,0,0,0,183,185,5,7,0,0,184,183,
-        1,0,0,0,184,185,1,0,0,0,185,29,1,0,0,0,186,191,3,32,16,0,187,188,
-        7,0,0,0,188,190,3,32,16,0,189,187,1,0,0,0,190,193,1,0,0,0,191,189,
-        1,0,0,0,191,192,1,0,0,0,192,31,1,0,0,0,193,191,1,0,0,0,194,211,5,
-        57,0,0,195,211,5,1,0,0,196,211,5,2,0,0,197,198,5,42,0,0,198,199,
-        3,30,15,0,199,200,5,43,0,0,200,211,1,0,0,0,201,202,5,44,0,0,202,
-        203,3,20,10,0,203,204,5,45,0,0,204,211,1,0,0,0,205,206,5,46,0,0,
-        206,207,3,30,15,0,207,208,5,47,0,0,208,211,1,0,0,0,209,211,3,34,
-        17,0,210,194,1,0,0,0,210,195,1,0,0,0,210,196,1,0,0,0,210,197,1,0,
-        0,0,210,201,1,0,0,0,210,205,1,0,0,0,210,209,1,0,0,0,211,33,1,0,0,
-        0,212,213,5,57,0,0,213,215,5,42,0,0,214,216,3,20,10,0,215,214,1,
-        0,0,0,215,216,1,0,0,0,216,217,1,0,0,0,217,218,5,43,0,0,218,35,1,
-        0,0,0,219,220,7,1,0,0,220,37,1,0,0,0,21,44,51,56,62,73,84,88,96,
-        121,127,139,143,147,154,162,175,181,184,191,210,215
+        1,3,3,3,83,8,3,1,4,1,4,3,4,87,8,4,1,5,1,5,1,5,1,5,1,5,1,5,3,5,95,
+        8,5,1,6,1,6,1,6,1,6,1,6,1,6,1,6,1,7,1,7,1,7,1,7,1,7,1,7,1,7,1,8,
+        1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,8,1,9,1,9,1,9,1,9,3,9,124,8,9,1,9,
+        1,9,1,9,1,9,1,9,1,9,1,9,1,9,5,9,134,8,9,10,9,12,9,137,9,9,1,9,3,
+        9,140,8,9,1,9,1,9,1,10,1,10,1,10,5,10,147,8,10,10,10,12,10,150,9,
+        10,1,11,1,11,1,11,5,11,155,8,11,10,11,12,11,158,9,11,1,12,1,12,1,
+        12,1,12,1,13,1,13,1,13,1,13,1,13,1,13,3,13,170,8,13,1,13,1,13,1,
+        14,1,14,3,14,176,8,14,1,14,3,14,179,8,14,1,15,1,15,1,15,5,15,184,
+        8,15,10,15,12,15,187,9,15,1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,
+        1,16,1,16,1,16,1,16,1,16,1,16,1,16,1,16,3,16,205,8,16,1,17,1,17,
+        1,17,3,17,210,8,17,1,17,1,17,1,18,1,18,1,18,0,0,19,0,2,4,6,8,10,
+        12,14,16,18,20,22,24,26,28,30,32,34,36,0,2,4,0,8,11,13,15,18,22,
+        24,28,1,0,48,56,231,0,38,1,0,0,0,2,44,1,0,0,0,4,73,1,0,0,0,6,82,
+        1,0,0,0,8,84,1,0,0,0,10,88,1,0,0,0,12,96,1,0,0,0,14,103,1,0,0,0,
+        16,110,1,0,0,0,18,119,1,0,0,0,20,143,1,0,0,0,22,151,1,0,0,0,24,159,
+        1,0,0,0,26,163,1,0,0,0,28,173,1,0,0,0,30,180,1,0,0,0,32,204,1,0,
+        0,0,34,206,1,0,0,0,36,213,1,0,0,0,38,39,3,2,1,0,39,40,5,0,0,1,40,
+        1,1,0,0,0,41,43,5,60,0,0,42,41,1,0,0,0,43,46,1,0,0,0,44,42,1,0,0,
+        0,44,45,1,0,0,0,45,47,1,0,0,0,46,44,1,0,0,0,47,56,3,4,2,0,48,50,
+        5,60,0,0,49,48,1,0,0,0,50,51,1,0,0,0,51,49,1,0,0,0,51,52,1,0,0,0,
+        52,53,1,0,0,0,53,55,3,4,2,0,54,49,1,0,0,0,55,58,1,0,0,0,56,54,1,
+        0,0,0,56,57,1,0,0,0,57,62,1,0,0,0,58,56,1,0,0,0,59,61,5,60,0,0,60,
+        59,1,0,0,0,61,64,1,0,0,0,62,60,1,0,0,0,62,63,1,0,0,0,63,3,1,0,0,
+        0,64,62,1,0,0,0,65,74,3,8,4,0,66,74,3,10,5,0,67,74,3,12,6,0,68,74,
+        3,14,7,0,69,74,3,16,8,0,70,74,3,18,9,0,71,74,3,26,13,0,72,74,5,41,
+        0,0,73,65,1,0,0,0,73,66,1,0,0,0,73,67,1,0,0,0,73,68,1,0,0,0,73,69,
+        1,0,0,0,73,70,1,0,0,0,73,71,1,0,0,0,73,72,1,0,0,0,74,5,1,0,0,0,75,
+        83,3,8,4,0,76,83,3,10,5,0,77,83,3,12,6,0,78,83,3,14,7,0,79,83,3,
+        16,8,0,80,83,5,41,0,0,81,83,3,28,14,0,82,75,1,0,0,0,82,76,1,0,0,
+        0,82,77,1,0,0,0,82,78,1,0,0,0,82,79,1,0,0,0,82,80,1,0,0,0,82,81,
+        1,0,0,0,83,7,1,0,0,0,84,86,3,30,15,0,85,87,5,60,0,0,86,85,1,0,0,
+        0,86,87,1,0,0,0,87,9,1,0,0,0,88,89,5,57,0,0,89,90,5,5,0,0,90,91,
+        3,36,18,0,91,92,5,16,0,0,92,94,3,30,15,0,93,95,5,7,0,0,94,93,1,0,
+        0,0,94,95,1,0,0,0,95,11,1,0,0,0,96,97,5,37,0,0,97,98,3,30,15,0,98,
+        99,5,46,0,0,99,100,5,60,0,0,100,101,3,2,1,0,101,102,5,47,0,0,102,
+        13,1,0,0,0,103,104,5,38,0,0,104,105,3,30,15,0,105,106,5,46,0,0,106,
+        107,5,60,0,0,107,108,3,2,1,0,108,109,5,47,0,0,109,15,1,0,0,0,110,
+        111,5,39,0,0,111,112,5,57,0,0,112,113,5,4,0,0,113,114,3,30,15,0,
+        114,115,5,46,0,0,115,116,5,60,0,0,116,117,3,2,1,0,117,118,5,47,0,
+        0,118,17,1,0,0,0,119,120,5,36,0,0,120,121,5,57,0,0,121,123,5,42,
+        0,0,122,124,3,22,11,0,123,122,1,0,0,0,123,124,1,0,0,0,124,125,1,
+        0,0,0,125,126,5,43,0,0,126,127,5,3,0,0,127,128,3,36,18,0,128,129,
+        5,46,0,0,129,130,5,60,0,0,130,135,3,6,3,0,131,132,5,60,0,0,132,134,
+        3,6,3,0,133,131,1,0,0,0,134,137,1,0,0,0,135,133,1,0,0,0,135,136,
+        1,0,0,0,136,139,1,0,0,0,137,135,1,0,0,0,138,140,5,60,0,0,139,138,
+        1,0,0,0,139,140,1,0,0,0,140,141,1,0,0,0,141,142,5,47,0,0,142,19,
+        1,0,0,0,143,148,3,30,15,0,144,145,5,6,0,0,145,147,3,30,15,0,146,
+        144,1,0,0,0,147,150,1,0,0,0,148,146,1,0,0,0,148,149,1,0,0,0,149,
+        21,1,0,0,0,150,148,1,0,0,0,151,156,3,24,12,0,152,153,5,6,0,0,153,
+        155,3,24,12,0,154,152,1,0,0,0,155,158,1,0,0,0,156,154,1,0,0,0,156,
+        157,1,0,0,0,157,23,1,0,0,0,158,156,1,0,0,0,159,160,5,57,0,0,160,
+        161,5,5,0,0,161,162,3,36,18,0,162,25,1,0,0,0,163,164,5,40,0,0,164,
+        165,5,57,0,0,165,166,5,46,0,0,166,167,5,60,0,0,167,169,3,2,1,0,168,
+        170,5,60,0,0,169,168,1,0,0,0,169,170,1,0,0,0,170,171,1,0,0,0,171,
+        172,5,47,0,0,172,27,1,0,0,0,173,175,5,34,0,0,174,176,3,30,15,0,175,
+        174,1,0,0,0,175,176,1,0,0,0,176,178,1,0,0,0,177,179,5,7,0,0,178,
+        177,1,0,0,0,178,179,1,0,0,0,179,29,1,0,0,0,180,185,3,32,16,0,181,
+        182,7,0,0,0,182,184,3,32,16,0,183,181,1,0,0,0,184,187,1,0,0,0,185,
+        183,1,0,0,0,185,186,1,0,0,0,186,31,1,0,0,0,187,185,1,0,0,0,188,205,
+        5,57,0,0,189,205,5,1,0,0,190,205,5,2,0,0,191,192,5,42,0,0,192,193,
+        3,30,15,0,193,194,5,43,0,0,194,205,1,0,0,0,195,196,5,44,0,0,196,
+        197,3,20,10,0,197,198,5,45,0,0,198,205,1,0,0,0,199,200,5,46,0,0,
+        200,201,3,30,15,0,201,202,5,47,0,0,202,205,1,0,0,0,203,205,3,34,
+        17,0,204,188,1,0,0,0,204,189,1,0,0,0,204,190,1,0,0,0,204,191,1,0,
+        0,0,204,195,1,0,0,0,204,199,1,0,0,0,204,203,1,0,0,0,205,33,1,0,0,
+        0,206,207,5,57,0,0,207,209,5,42,0,0,208,210,3,20,10,0,209,208,1,
+        0,0,0,209,210,1,0,0,0,210,211,1,0,0,0,211,212,5,43,0,0,212,35,1,
+        0,0,0,213,214,7,1,0,0,214,37,1,0,0,0,19,44,51,56,62,73,82,86,94,
+        123,135,139,148,156,169,175,178,185,204,209
     ]
 
 class PythonStaticTypingParser ( Parser ):
@@ -530,14 +527,6 @@ class PythonStaticTypingParser ( Parser ):
             return self.getTypedRuleContext(PythonStaticTypingParser.For_statementContext,0)
 
 
-        def function_definition(self):
-            return self.getTypedRuleContext(PythonStaticTypingParser.Function_definitionContext,0)
-
-
-        def class_definition(self):
-            return self.getTypedRuleContext(PythonStaticTypingParser.Class_definitionContext,0)
-
-
         def COMMENT(self):
             return self.getToken(PythonStaticTypingParser.COMMENT, 0)
 
@@ -570,7 +559,7 @@ class PythonStaticTypingParser ( Parser ):
         localctx = PythonStaticTypingParser.Function_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 6, self.RULE_function_statement)
         try:
-            self.state = 84
+            self.state = 82
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,5,self._ctx)
             if la_ == 1:
@@ -606,24 +595,12 @@ class PythonStaticTypingParser ( Parser ):
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
                 self.state = 80
-                self.function_definition()
+                self.match(PythonStaticTypingParser.COMMENT)
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
                 self.state = 81
-                self.class_definition()
-                pass
-
-            elif la_ == 8:
-                self.enterOuterAlt(localctx, 8)
-                self.state = 82
-                self.match(PythonStaticTypingParser.COMMENT)
-                pass
-
-            elif la_ == 9:
-                self.enterOuterAlt(localctx, 9)
-                self.state = 83
                 self.return_statement()
                 pass
 
@@ -677,13 +654,13 @@ class PythonStaticTypingParser ( Parser ):
         self.enterRule(localctx, 8, self.RULE_expression_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 86
+            self.state = 84
             self.expression()
-            self.state = 88
+            self.state = 86
             self._errHandler.sync(self)
             la_ = self._interp.adaptivePredict(self._input,6,self._ctx)
             if la_ == 1:
-                self.state = 87
+                self.state = 85
                 self.match(PythonStaticTypingParser.NEWLINE)
 
 
@@ -750,21 +727,21 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 90
+            self.state = 88
             self.match(PythonStaticTypingParser.IDENTIFIER)
-            self.state = 91
+            self.state = 89
             self.match(PythonStaticTypingParser.COLON)
-            self.state = 92
+            self.state = 90
             self.type_()
-            self.state = 93
+            self.state = 91
             self.match(PythonStaticTypingParser.EQUAL)
-            self.state = 94
+            self.state = 92
             self.expression()
-            self.state = 96
+            self.state = 94
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==7:
-                self.state = 95
+                self.state = 93
                 self.match(PythonStaticTypingParser.SEMI)
 
 
@@ -830,17 +807,17 @@ class PythonStaticTypingParser ( Parser ):
         self.enterRule(localctx, 12, self.RULE_if_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 98
+            self.state = 96
             self.match(PythonStaticTypingParser.IF)
-            self.state = 99
+            self.state = 97
             self.expression()
-            self.state = 100
+            self.state = 98
             self.match(PythonStaticTypingParser.OPEN_BRACE)
-            self.state = 101
+            self.state = 99
             self.match(PythonStaticTypingParser.NEWLINE)
-            self.state = 102
+            self.state = 100
             self.statements()
-            self.state = 103
+            self.state = 101
             self.match(PythonStaticTypingParser.CLOSE_BRACE)
         except RecognitionException as re:
             localctx.exception = re
@@ -904,17 +881,17 @@ class PythonStaticTypingParser ( Parser ):
         self.enterRule(localctx, 14, self.RULE_while_statement)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 105
+            self.state = 103
             self.match(PythonStaticTypingParser.WHILE)
-            self.state = 106
+            self.state = 104
             self.expression()
-            self.state = 107
+            self.state = 105
             self.match(PythonStaticTypingParser.OPEN_BRACE)
-            self.state = 108
+            self.state = 106
             self.match(PythonStaticTypingParser.NEWLINE)
-            self.state = 109
+            self.state = 107
             self.statements()
-            self.state = 110
+            self.state = 108
             self.match(PythonStaticTypingParser.CLOSE_BRACE)
         except RecognitionException as re:
             localctx.exception = re
@@ -958,10 +935,6 @@ class PythonStaticTypingParser ( Parser ):
         def CLOSE_BRACE(self):
             return self.getToken(PythonStaticTypingParser.CLOSE_BRACE, 0)
 
-        def statement(self):
-            return self.getTypedRuleContext(PythonStaticTypingParser.StatementContext,0)
-
-
         def getRuleIndex(self):
             return PythonStaticTypingParser.RULE_for_statement
 
@@ -986,33 +959,24 @@ class PythonStaticTypingParser ( Parser ):
 
         localctx = PythonStaticTypingParser.For_statementContext(self, self._ctx, self.state)
         self.enterRule(localctx, 16, self.RULE_for_statement)
-        self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 112
+            self.state = 110
             self.match(PythonStaticTypingParser.FOR)
-            self.state = 113
+            self.state = 111
             self.match(PythonStaticTypingParser.IDENTIFIER)
-            self.state = 114
+            self.state = 112
             self.match(PythonStaticTypingParser.IN)
-            self.state = 115
+            self.state = 113
             self.expression()
-            self.state = 116
+            self.state = 114
             self.match(PythonStaticTypingParser.OPEN_BRACE)
-            self.state = 117
+            self.state = 115
             self.match(PythonStaticTypingParser.NEWLINE)
-            self.state = 118
+            self.state = 116
             self.statements()
-            self.state = 119
+            self.state = 117
             self.match(PythonStaticTypingParser.CLOSE_BRACE)
-            self.state = 121
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 144211876379623430) != 0):
-                self.state = 120
-                self.statement()
-
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1071,10 +1035,6 @@ class PythonStaticTypingParser ( Parser ):
             return self.getTypedRuleContext(PythonStaticTypingParser.Typed_parametersContext,0)
 
 
-        def statement(self):
-            return self.getTypedRuleContext(PythonStaticTypingParser.StatementContext,0)
-
-
         def getRuleIndex(self):
             return PythonStaticTypingParser.RULE_function_definition
 
@@ -1102,63 +1062,55 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 123
+            self.state = 119
             self.match(PythonStaticTypingParser.DEF)
-            self.state = 124
+            self.state = 120
             self.match(PythonStaticTypingParser.IDENTIFIER)
-            self.state = 125
+            self.state = 121
             self.match(PythonStaticTypingParser.OPEN_PAREN)
-            self.state = 127
+            self.state = 123
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==57:
-                self.state = 126
+                self.state = 122
                 self.typed_parameters()
 
 
-            self.state = 129
+            self.state = 125
             self.match(PythonStaticTypingParser.CLOSE_PAREN)
-            self.state = 130
+            self.state = 126
             self.match(PythonStaticTypingParser.TYPE_ANNOTATION)
-            self.state = 131
+            self.state = 127
             self.type_()
-            self.state = 132
+            self.state = 128
             self.match(PythonStaticTypingParser.OPEN_BRACE)
-            self.state = 133
+            self.state = 129
             self.match(PythonStaticTypingParser.NEWLINE)
-            self.state = 134
+            self.state = 130
             self.function_statement()
-            self.state = 139
+            self.state = 135
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
-                    self.state = 135
+                    self.state = 131
                     self.match(PythonStaticTypingParser.NEWLINE)
-                    self.state = 136
+                    self.state = 132
                     self.function_statement() 
-                self.state = 141
+                self.state = 137
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,10,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,9,self._ctx)
 
-            self.state = 143
+            self.state = 139
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==60:
-                self.state = 142
+                self.state = 138
                 self.match(PythonStaticTypingParser.NEWLINE)
 
 
-            self.state = 145
+            self.state = 141
             self.match(PythonStaticTypingParser.CLOSE_BRACE)
-            self.state = 147
-            self._errHandler.sync(self)
-            _la = self._input.LA(1)
-            if (((_la) & ~0x3f) == 0 and ((1 << _la) & 144211876379623430) != 0):
-                self.state = 146
-                self.statement()
-
-
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1215,17 +1167,17 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 149
+            self.state = 143
             self.expression()
-            self.state = 154
+            self.state = 148
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==6:
-                self.state = 150
+                self.state = 144
                 self.match(PythonStaticTypingParser.COMMA)
-                self.state = 151
+                self.state = 145
                 self.expression()
-                self.state = 156
+                self.state = 150
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1285,17 +1237,17 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 157
+            self.state = 151
             self.typed_parameter()
-            self.state = 162
+            self.state = 156
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while _la==6:
-                self.state = 158
+                self.state = 152
                 self.match(PythonStaticTypingParser.COMMA)
-                self.state = 159
+                self.state = 153
                 self.typed_parameter()
-                self.state = 164
+                self.state = 158
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1351,11 +1303,11 @@ class PythonStaticTypingParser ( Parser ):
         self.enterRule(localctx, 24, self.RULE_typed_parameter)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 165
+            self.state = 159
             self.match(PythonStaticTypingParser.IDENTIFIER)
-            self.state = 166
+            self.state = 160
             self.match(PythonStaticTypingParser.COLON)
-            self.state = 167
+            self.state = 161
             self.type_()
         except RecognitionException as re:
             localctx.exception = re
@@ -1422,25 +1374,25 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 169
+            self.state = 163
             self.match(PythonStaticTypingParser.CLASS)
-            self.state = 170
+            self.state = 164
             self.match(PythonStaticTypingParser.IDENTIFIER)
-            self.state = 171
+            self.state = 165
             self.match(PythonStaticTypingParser.OPEN_BRACE)
-            self.state = 172
+            self.state = 166
             self.match(PythonStaticTypingParser.NEWLINE)
-            self.state = 173
+            self.state = 167
             self.statements()
-            self.state = 175
+            self.state = 169
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==60:
-                self.state = 174
+                self.state = 168
                 self.match(PythonStaticTypingParser.NEWLINE)
 
 
-            self.state = 177
+            self.state = 171
             self.match(PythonStaticTypingParser.CLOSE_BRACE)
         except RecognitionException as re:
             localctx.exception = re
@@ -1495,21 +1447,21 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 179
+            self.state = 173
             self.match(PythonStaticTypingParser.RETURN)
-            self.state = 181
+            self.state = 175
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 144207547052589062) != 0):
-                self.state = 180
+                self.state = 174
                 self.expression()
 
 
-            self.state = 184
+            self.state = 178
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==7:
-                self.state = 183
+                self.state = 177
                 self.match(PythonStaticTypingParser.SEMI)
 
 
@@ -1665,22 +1617,22 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 186
+            self.state = 180
             self.primary()
-            self.state = 191
+            self.state = 185
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & 528281344) != 0):
-                self.state = 187
+                self.state = 181
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 528281344) != 0)):
                     self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()
-                self.state = 188
+                self.state = 182
                 self.primary()
-                self.state = 193
+                self.state = 187
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
@@ -1764,60 +1716,60 @@ class PythonStaticTypingParser ( Parser ):
         localctx = PythonStaticTypingParser.PrimaryContext(self, self._ctx, self.state)
         self.enterRule(localctx, 32, self.RULE_primary)
         try:
-            self.state = 210
+            self.state = 204
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,17,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 194
+                self.state = 188
                 self.match(PythonStaticTypingParser.IDENTIFIER)
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 195
+                self.state = 189
                 self.match(PythonStaticTypingParser.NUMBER)
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 196
+                self.state = 190
                 self.match(PythonStaticTypingParser.STRING)
                 pass
 
             elif la_ == 4:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 197
+                self.state = 191
                 self.match(PythonStaticTypingParser.OPEN_PAREN)
-                self.state = 198
+                self.state = 192
                 self.expression()
-                self.state = 199
+                self.state = 193
                 self.match(PythonStaticTypingParser.CLOSE_PAREN)
                 pass
 
             elif la_ == 5:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 201
+                self.state = 195
                 self.match(PythonStaticTypingParser.OPEN_BRACKET)
-                self.state = 202
+                self.state = 196
                 self.expression_list()
-                self.state = 203
+                self.state = 197
                 self.match(PythonStaticTypingParser.CLOSE_BRACKET)
                 pass
 
             elif la_ == 6:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 205
+                self.state = 199
                 self.match(PythonStaticTypingParser.OPEN_BRACE)
-                self.state = 206
+                self.state = 200
                 self.expression()
-                self.state = 207
+                self.state = 201
                 self.match(PythonStaticTypingParser.CLOSE_BRACE)
                 pass
 
             elif la_ == 7:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 209
+                self.state = 203
                 self.function_call()
                 pass
 
@@ -1878,19 +1830,19 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 212
+            self.state = 206
             self.match(PythonStaticTypingParser.IDENTIFIER)
-            self.state = 213
+            self.state = 207
             self.match(PythonStaticTypingParser.OPEN_PAREN)
-            self.state = 215
+            self.state = 209
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if (((_la) & ~0x3f) == 0 and ((1 << _la) & 144207547052589062) != 0):
-                self.state = 214
+                self.state = 208
                 self.expression_list()
 
 
-            self.state = 217
+            self.state = 211
             self.match(PythonStaticTypingParser.CLOSE_PAREN)
         except RecognitionException as re:
             localctx.exception = re
@@ -1962,7 +1914,7 @@ class PythonStaticTypingParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 219
+            self.state = 213
             _la = self._input.LA(1)
             if not((((_la) & ~0x3f) == 0 and ((1 << _la) & 143833713099145216) != 0)):
                 self._errHandler.recoverInline(self)
