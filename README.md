@@ -16,10 +16,9 @@
 </ul>
 
 ## Tokeny
-```diff
+```g4
 // Lexer Rules
-// Tokens
-IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
+// Tokes
 NUMBER: '-'? ( '0' | [1-9] [0-9]* ) ( '.' [0-9]+ )? ( ('e' | 'E') [+-]? [0-9]+ )?;
 STRING: '"' ( '\\' . | ~["\\] )* '"' | '\'' ( '\\' . | ~['\\] )* '\'';
 TYPE_ANNOTATION: '->';
@@ -32,7 +31,7 @@ MINUS: '-';
 STAR: '*';
 SLASH: '/';
 VBAR: '|';
-AMPERSAND: '&'; 
+AMPERSAND: '&'; // Fixed token name
 LESS: '<';
 GREATER: '>';
 EQUAL: '=';
@@ -62,7 +61,6 @@ IF: 'if';
 WHILE: 'while';
 FOR: 'for';
 CLASS: 'class';
-PRINT: 'print';
 
 // Comments
 COMMENT: '#' ~[\r\n]* -> skip;
@@ -77,21 +75,27 @@ CLOSE_BRACE: '}';
 
 // Type annotations
 INT: 'int';
-STR: 'string';
+STR: 'str';
 FLOAT: 'float';
 COMPLEX: 'complex';
-BOOLEAN: ('True' | 'False'); 
+BOOLEAN: ('True' | 'False'); // Fixed token names
 LIST: 'list';
 TUPLE: 'tuple';
 DICT: 'dict';
 SET: 'set';
+IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
+
+INDENT: 'INDENT';
+DEDENT: 'DEDENT';
+
+NEWLINE: '\r'? '\n';
+WS: [ \t]+ -> skip;
 ```
 ## Gramatyka
-```diff
-// Parser rules
+```g4
 program: statements EOF;
 
-statements: statement (NEWLINE statement)* NEWLINE?;
+statements: NEWLINE* statement (NEWLINE+ statement)* NEWLINE*;
 
 statement: expression_statement
          | assignment_statement
@@ -100,53 +104,61 @@ statement: expression_statement
          | for_statement
          | function_definition
          | class_definition
-         | break_statement
-         | continue_statement
-         | return_statement
          | COMMENT;
+
+function_statement: expression_statement
+         | assignment_statement
+         | if_statement
+         | while_statement
+         | for_statement
+         | function_definition
+         | class_definition
+         | COMMENT
+         | return_statement;
 
 expression_statement : expression NEWLINE?;
 
-assignment_statement : IDENTIFIER EQUAL expression SEMI?;
+assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
 
-if_statement : IF expression COLON INDENT statements DEDENT;
+if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-while_statement : WHILE expression COLON INDENT statements DEDENT;
+while_statement : WHILE expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-for_statement : FOR IDENTIFIER IN expression COLON INDENT statements DEDENT;
+for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE statement?;
 
-function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION COLON INDENT statements DEDENT;
+function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statement (NEWLINE function_statement)* NEWLINE? CLOSE_BRACE statement?;
+
+expression_list : expression (COMMA expression)*;
 
 typed_parameters : typed_parameter (COMMA typed_parameter)*;
 
-typed_parameter : IDENTIFIER COLON TYPE_ANNOTATION;
+typed_parameter : IDENTIFIER COLON type;
 
-class_definition : CLASS IDENTIFIER COLON INDENT statements DEDENT;
-
-break_statement : BREAK SEMI?;
-
-continue_statement : CONTINUE SEMI?;
+class_definition : CLASS IDENTIFIER OPEN_BRACE NEWLINE statements NEWLINE? CLOSE_BRACE;
 
 return_statement : RETURN expression? SEMI?;
 
-expression : simple_expression ((PLUS | MINUS | STAR | SLASH | AMPERSAND | LESS | GREATER | EQUAL | PERCENT | EQEQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | PLUSEQUAL | MINEQUAL | STAREQUAL | SLASHEQUAL | PERCENTEQUAL) simple_expression)*;
-
-simple_expression : primary ((PLUS | MINUS) primary)*;
+expression : primary ((PLUS | MINUS | STAR | SLASH | AMPERSAND | LESS | GREATER | PERCENT | EQEQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | PLUSEQUAL | MINEQUAL | STAREQUAL | SLASHEQUAL | PERCENTEQUAL) primary)*;
 
 primary : IDENTIFIER
         | NUMBER
         | STRING
         | OPEN_PAREN expression CLOSE_PAREN
-        | OPEN_BRACKET expression CLOSE_BRACKET
-        | OPEN_BRACE expression CLOSE_BRACE;
+        | OPEN_BRACKET expression_list CLOSE_BRACKET
+        | OPEN_BRACE expression CLOSE_BRACE
+        | function_call;
 
-// Indentation rules
-INDENT: 'INDENT';
-DEDENT: 'DEDENT';
+function_call : IDENTIFIER OPEN_PAREN expression_list? CLOSE_PAREN;
 
-NEWLINE: '\r'? '\n' -> skip;
-
-WS: [ \t]+ -> skip;
+type : INT
+     | STR
+     | FLOAT
+     | COMPLEX
+     | BOOLEAN
+     | LIST
+     | TUPLE
+     | DICT
+     | SET;
 ```
 ## How to use 
 
