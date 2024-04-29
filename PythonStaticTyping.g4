@@ -58,7 +58,7 @@ CLOSE_BRACE: '}';
 
 // Type annotations
 INT: 'int';
-STR: 'string';
+STR: 'str';
 FLOAT: 'float';
 COMPLEX: 'complex';
 BOOLEAN: ('True' | 'False'); // Fixed token names
@@ -76,7 +76,7 @@ DEDENT: 'DEDENT';
 // Parser rules
 program: statements EOF;
 
-statements: statement (NEWLINE+ statement)* NEWLINE?;
+statements: NEWLINE* statement (NEWLINE+ statement)* NEWLINE*;
 
 statement: expression_statement
          | assignment_statement
@@ -101,21 +101,21 @@ expression_statement : expression NEWLINE?;
 
 assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
 
-if_statement : IF expression COLON INDENT statements DEDENT;
+if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-while_statement : WHILE expression COLON INDENT statements DEDENT;
+while_statement : WHILE expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-for_statement : FOR IDENTIFIER IN expression COLON NEWLINE statements NEWLINE statement?;
+for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE statement?;
 
-function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type COLON NEWLINE function_statement (NEWLINE function_statement)* NEWLINE statement?;
+function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statement (NEWLINE function_statement)* NEWLINE? CLOSE_BRACE statement?;
 
 expression_list : expression (COMMA expression)*;
 
 typed_parameters : typed_parameter (COMMA typed_parameter)*;
 
-typed_parameter : IDENTIFIER COLON TYPE_ANNOTATION;
+typed_parameter : IDENTIFIER COLON type;
 
-class_definition : CLASS IDENTIFIER COLON INDENT statements DEDENT;
+class_definition : CLASS IDENTIFIER OPEN_BRACE NEWLINE statements NEWLINE? CLOSE_BRACE;
 
 return_statement : RETURN expression? SEMI?;
 
@@ -145,24 +145,4 @@ type : INT
 NEWLINE: '\r'? '\n';
 WS: [ \t]+ -> skip;
 
-//program: statements EOF;
-//
-//statements: statement (NEWLINE statement)* NEWLINE?;
-//
-//statement: assignment_statement | if_statement;
-//
-//assignment_statement: type IDENTIFIER EQUAL expression;
-//
-//if_statement: 'if' expression ':' INDENT statements DEDENT;
-//
-//type: 'int' | 'str' | 'float' | 'bool';
-//
-//expression: simple_expression operator simple_expression | simple_expression;
-//
-//simple_expression: IDENTIFIER | NUMBER | STRING | OPEN_PAREN expression CLOSE_PAREN;
-//
-//operator: PLUS | MINUS;
-//
-//WS: [ ]+ -> skip;
-//
 

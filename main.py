@@ -4,17 +4,17 @@ from gen.PythonStaticTypingLexer import PythonStaticTypingLexer
 from gen.PythonStaticTypingParser import PythonStaticTypingParser
 
 # Input text to parse
-input_text = """def elo() -> int:
-    kicha: int = 3
-    kacha: string = '3'
-    return 3
-    
-    
-    
-elo()
+input_text = """
+print('Hello world')
 
+def do_something(param: str, num: int) -> int {
+    for i in range(num) {
+        print(param)
+    }
+    return num
+}
 
-seba: int = 33
+result: int = do_something('test', 3)
 
 """
 
@@ -30,7 +30,3 @@ parser = PythonStaticTypingParser(token_stream)
 tree = parser.program()
 print(tree.toStringTree())
 
-# Print out tokens
-# token_stream.fill()
-# for token in token_stream.tokens:
-#     print(token)

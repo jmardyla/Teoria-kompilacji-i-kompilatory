@@ -89,11 +89,6 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by PythonStaticTypingParser#simple_expression.
-    def visitSimple_expression(self, ctx:PythonStaticTypingParser.Simple_expressionContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by PythonStaticTypingParser#primary.
     def visitPrimary(self, ctx:PythonStaticTypingParser.PrimaryContext):
         return self.visitChildren(ctx)

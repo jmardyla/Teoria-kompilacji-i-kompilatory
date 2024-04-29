@@ -152,15 +152,6 @@ class PythonStaticTypingListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PythonStaticTypingParser#simple_expression.
-    def enterSimple_expression(self, ctx:PythonStaticTypingParser.Simple_expressionContext):
-        pass
-
-    # Exit a parse tree produced by PythonStaticTypingParser#simple_expression.
-    def exitSimple_expression(self, ctx:PythonStaticTypingParser.Simple_expressionContext):
-        pass
-
-
     # Enter a parse tree produced by PythonStaticTypingParser#primary.
     def enterPrimary(self, ctx:PythonStaticTypingParser.PrimaryContext):
         pass
