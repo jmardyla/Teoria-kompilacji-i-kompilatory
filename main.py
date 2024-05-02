@@ -16,13 +16,15 @@ def colorize_syntax(input_text: str, output_file: str):
     tree = parser.program()
 
     # Create HTML output
-    html_output = ""
-    html_output += "<pre>\n"
+    html_output = "<pre>\n"
 
     # Colorize tokens
     for child in tree.children:
-        html_output += colorize_node(child)
+        html_chunk = colorize_node(child)
+        if html_chunk is not None:
+            html_output += html_chunk
 
+    # Write closing tag
     html_output += "</pre>"
 
     # Write HTML output to file
@@ -31,8 +33,8 @@ def colorize_syntax(input_text: str, output_file: str):
 
 
 def colorize_node(node):
-    if node.getChildCount() == 0:
-        token_type = node.getSymbol().type
+    if hasattr(node, 'symbol') and node.symbol is not None:
+        token_type = node.symbol.type
         token_value = node.getText()
 
         # Map token types to HTML colors
@@ -47,6 +49,9 @@ def colorize_node(node):
 
         # Generate HTML with color
         return f"<span style='color: {color}'>{token_value}</span>"
+    elif hasattr(node, 'symbol') and node.symbol is None and node.getText() == "<EOF>":
+        # Handle special case for <EOF>
+        return None
     else:
         # Recursively colorize child nodes
         result = ""
