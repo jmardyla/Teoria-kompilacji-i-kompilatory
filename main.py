@@ -4,32 +4,44 @@ from gen.PythonStaticTypingParser import PythonStaticTypingParser
 
 
 def colorize_syntax(input_text: str, output_file: str):
-    # Create an input stream
+    # Tworzenie strumienia wejściowego
     input_stream = InputStream(input_text)
 
-    # Create a lexer
+    # Tworzenie leksera
     lexer = PythonStaticTypingLexer(input_stream)
 
-    # Create a token stream
+    # Tworzenie strumienia tokenów
     token_stream = CommonTokenStream(lexer)
     parser = PythonStaticTypingParser(token_stream)
     tree = parser.program()
 
-    # Create HTML output
+    # Wyświetlenie tokenów w drzewie parsowania
+    print_tokens_in_tree(tree)
+    # Tworzenie wyjścia HTML
     html_output = "<pre>\n"
 
-    # Colorize tokens
+    # Kolorowanie tokenów
     for child in tree.children:
         html_chunk = colorize_node(child)
         if html_chunk is not None:
             html_output += html_chunk
 
-    # Write closing tag
+    # Zapisywanie znacznika zamykającego
     html_output += "</pre>"
 
-    # Write HTML output to file
+    # Zapisywanie wyjścia HTML do pliku
     with open(output_file, 'w') as file:
         file.write(html_output)
+
+
+def print_tokens_in_tree(node):
+    for child in node.children:
+        if hasattr(child, 'symbol') and child.symbol is not None:
+            token_type = child.symbol.type
+            token_value = child.getText()
+            print(f"Token type: {token_type}, Token value: {token_value}")
+        else:
+            print_tokens_in_tree(child)
 
 
 def colorize_node(node):
@@ -37,30 +49,39 @@ def colorize_node(node):
         token_type = node.symbol.type
         token_value = node.getText()
 
-        # Map token types to HTML colors
+        # Mapowanie typów tokenów na kolory HTML
         color_mapping = {
             PythonStaticTypingLexer.IDENTIFIER: 'blue',
             PythonStaticTypingLexer.NUMBER: 'green',
-            # Add more mappings as needed for your grammar
+            PythonStaticTypingLexer.STRING: 'magenta',
+            PythonStaticTypingLexer.TYPE_ANNOTATION: 'maroon',
+            PythonStaticTypingLexer.INT: 'purple',
+            PythonStaticTypingLexer.DEF: 'red',
+            PythonStaticTypingLexer.CLASS: 'red',
+            PythonStaticTypingLexer.IF: 'red',
+            PythonStaticTypingLexer.ELSE: 'red',
+            PythonStaticTypingLexer.RETURN: 'red',
+            PythonStaticTypingLexer.FOR: 'red',
+            PythonStaticTypingLexer.IN: 'red',
         }
 
-        # Use default color if no mapping found
+        # Użycie koloru domyślnego, jeśli nie znaleziono mapowania
         color = color_mapping.get(token_type, 'black')
 
-        # Generate HTML with color
+        # Generowanie HTML z kolorem
         return f"<span style='color: {color}'>{token_value}</span>"
     elif hasattr(node, 'symbol') and node.symbol is None and node.getText() == "<EOF>":
-        # Handle special case for <EOF>
+        # Obsługa specjalnego przypadku dla <EOF>
         return None
     else:
-        # Recursively colorize child nodes
+        # Rekurencyjne kolorowanie podrzędnych węzłów
         result = ""
         for child in node.children:
             result += colorize_node(child)
         return result
 
 
-# Example usage
+# Przykładowe użycie
 input_text = """
 print('Hello world')
 
