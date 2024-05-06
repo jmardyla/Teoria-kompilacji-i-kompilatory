@@ -1,0 +1,8 @@
+class Scaner: 
+    def __init__(self, expr: str):
+        self.expr = expr
+        self.it: int = 0
+
+    def scan(self) -> (Token, str):
+        if self.it >= len(self.expr):
+            return Token.END, ''
