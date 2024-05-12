@@ -2,7 +2,6 @@ grammar PythonStaticTyping;
 
 // Lexer Rules
 // Tokes
-RANGE: 'range';
 NUMBER: '-'? ( '0' | [1-9] [0-9]* ) ( '.' [0-9]+ )? ( ('e' | 'E') [+-]? [0-9]+ )?;
 STRING: '"' ( '\\' . | ~["\\] )* '"' | '\'' ( '\\' . | ~['\\] )* '\'';
 TYPE_ANNOTATION: '->';

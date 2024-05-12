@@ -96,3 +96,5 @@ result: int = do_something('test', 3)
 """
 
 colorize_syntax(input_text, "output.html")
+
+
