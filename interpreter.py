@@ -112,7 +112,15 @@ class PythonStaticTypingInterpreter(PythonStaticTypingParser):
 
 
 def main():
-    input_stream = InputStream("print('Hello World')")
+    input_text = """
+    print('Hello world')
+    liczba: int = 2*3
+
+
+    result: int = 3
+    """
+
+    input_stream = InputStream(input_text)
     interpreter = PythonStaticTypingInterpreter(input_stream, None)  # Pass None as the second argument for TokenStream
     interpreter.visitProgram(interpreter.program())
 
