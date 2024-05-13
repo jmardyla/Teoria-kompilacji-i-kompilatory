@@ -1,130 +1,79 @@
-from antlr4 import InputStream, CommonTokenStream, TokenStream
+import ast
+from antlr4 import *
 from gen.PythonStaticTypingLexer import PythonStaticTypingLexer
 from gen.PythonStaticTypingParser import PythonStaticTypingParser
+from gen.PythonStaticTypingVisitor import PythonStaticTypingVisitor
 
-class PythonStaticTypingInterpreter(PythonStaticTypingParser):
-    def __init__(self, input_stream, input: TokenStream):
-        lexer = PythonStaticTypingLexer(input_stream)
-        stream = CommonTokenStream(lexer)
-        super().__init__(stream, input)
+class SimpleInterpreter(PythonStaticTypingVisitor):
+    def __init__(self):
         self.variables = {}
 
-    def visitProgram(self, ctx):
-        return self.visitStatements(ctx.statements())
+    def visit_Module(self, node):
+        for statement in node.body:
+            self.visit(statement)
 
-    def visitStatements(self, ctx):
-        for statement in ctx.statement():
-            self.visitStatement(statement)
+    def visit_Expr(self, node):
+        value = self.visit(node.value)
+        print(value)
 
-    def visitStatement(self, ctx):
-        if ctx.function_definition():
-            self.visitFunction_definition(ctx.function_definition())
-        elif ctx.assignment_statement():
-            self.visitAssignment_statement(ctx.assignment_statement())
-        elif ctx.if_statement():
-            self.visitIf_statement(ctx.if_statement())
-        elif ctx.while_statement():
-            self.visitWhile_statement(ctx.while_statement())
-        elif ctx.for_statement():
-            self.visitFor_statement(ctx.for_statement())
-        elif ctx.expression_statement():
-            self.visitExpression_statement(ctx.expression_statement())
-        elif ctx.function_call():
-            self.visitFunction_call(ctx.function_call())
+    def visit_BinOp(self, node):
+        left = self.visit(node.left)
+        right = self.visit(node.right)
+        op = node.op
+        if isinstance(op, ast.Add):
+            return left + right
+        elif isinstance(op, ast.Sub):
+            return left - right
+        elif isinstance(op, ast.Mult):
+            return left * right
+        elif isinstance(op, ast.Div):
+            return left / right
 
-    def visitFunction_definition(self, ctx):
-        # Handle function definition
-        pass
+    def visit_Num(self, node):
+        return node.n
 
-    def visitAssignment_statement(self, ctx):
-        identifier = ctx.IDENTIFIER().getText()
-        value = self.visitExpression(ctx.expression())
+    def visit_Name(self, node):
+        return self.variables.get(node.id, None)
+
+    def visit_Assign(self, node):
+        identifier = node.targets[0].id
+        value = self.visit(node.value)
         self.variables[identifier] = value
 
-    def visitIf_statement(self, ctx):
-        if_condition = self.visitExpression(ctx.expression())
-        if if_condition:
-            self.visitStatements(ctx.statements())
+    def visit_Print(self, node):
+        value = self.visit(node.values[0])
+        print(value)
 
-    def visitWhile_statement(self, ctx):
-        while_condition = self.visitExpression(ctx.expression())
-        while while_condition:
-            self.visitStatements(ctx.statements())
-            while_condition = self.visitExpression(ctx.expression())
+    def visit_Compare(self, node):
+        left = self.visit(node.left)
+        right = self.visit(node.comparators[0])
+        op = node.ops[0]
+        if isinstance(op, ast.Eq):
+            return left == right
+        elif isinstance(op, ast.NotEq):
+            return left != right
+        elif isinstance(op, ast.Lt):
+            return left < right
+        elif isinstance(op, ast.LtE):
+            return left <= right
+        elif isinstance(op, ast.Gt):
+            return left > right
+        elif isinstance(op, ast.GtE):
+            return left >= right
 
-    def visitFor_statement(self, ctx):
-        iterable = self.visitExpression(ctx.expression())
-        for item in iterable:
-            self.variables[ctx.IDENTIFIER().getText()] = item
-            self.visitStatements(ctx.statements())
+def interpret(code):
+    lexer = PythonStaticTypingLexer(InputStream(code))
+    tokens = CommonTokenStream(lexer)
+    parser = PythonStaticTypingParser(tokens)
+    tree = parser.program()
+    interpreter = SimpleInterpreter()
+    interpreter.visit(tree)
 
-    def visitFunction_call(self, ctx):
-        function_name = ctx.IDENTIFIER().getText()
-        # Assuming a simple print for now
-        if function_name == 'print':
-            args = ctx.expression_list().expression()
-            values = [self.visitExpression(arg) for arg in args]
-            print(*values)
+# Example usage:
+code = """
+x = 10
+y = 20
+print(x + y)
+"""
 
-    def visitExpression_statement(self, ctx):
-        value = self.visitExpression(ctx.expression())
-        print(value)  # Print the value for now
-
-    def visitExpression(self, ctx):
-        if ctx.primary():
-            return self.visitPrimary(ctx.primary())
-        elif ctx.PLUS():
-            left = self.visitExpression(ctx.expression(0))
-            right = self.visitExpression(ctx.expression(1))
-            return left + right
-        elif ctx.MINUS():
-            left = self.visitExpression(ctx.expression(0))
-            right = self.visitExpression(ctx.expression(1))
-            return left - right
-        elif ctx.STAR():
-            left = self.visitExpression(ctx.expression(0))
-            right = self.visitExpression(ctx.expression(1))
-            return left * right
-        elif ctx.SLASH():
-            left = self.visitExpression(ctx.expression(0))
-            right = self.visitExpression(ctx.expression(1))
-            return left / right
-        elif ctx.function_call():
-            return self.visitFunction_call(ctx.function_call())
-
-    def visitPrimary(self, ctx):
-        if isinstance(ctx, list):  # If ctx is a list of primary expressions
-            return [self.visitPrimary(primary) for primary in ctx]
-        elif ctx.IDENTIFIER():
-            return self.variables.get(ctx.IDENTIFIER().getText())
-        elif ctx.NUMBER():
-            return float(ctx.NUMBER().getText())
-        elif ctx.STRING():
-            return ctx.STRING().getText()[1:-1]  # Remove quotes from the string
-        elif ctx.OPEN_PAREN():
-            return self.visitExpression(ctx.expression())
-        elif ctx.OPEN_BRACKET():
-            return [self.visitExpression(expression) for expression in ctx.expression_list().expression()]
-        elif ctx.OPEN_BRACE():
-            return self.visitExpression(ctx.expression())
-        elif ctx.function_call():
-            return self.visitFunction_call(ctx.function_call())
-
-
-def main():
-    input_text = """
-    print('Hello world')
-    liczba: int = 2*3
-
-
-    result: int = 3
-    """
-
-    input_stream = InputStream(input_text)
-    interpreter = PythonStaticTypingInterpreter(input_stream, None)  # Pass None as the second argument for TokenStream
-    interpreter.visitProgram(interpreter.program())
-
-if __name__ == '__main__':
-    main()
-
-
+interpret(code)

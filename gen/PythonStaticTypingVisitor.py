@@ -2,9 +2,9 @@
 from antlr4 import *
 
 if "." in __name__:
-    from .PythonStaticTypingParser import PythonStaticTypingParser
+    from gen.PythonStaticTypingParser import PythonStaticTypingParser
 else:
-    from PythonStaticTypingParser import PythonStaticTypingParser
+    from gen.PythonStaticTypingParser import PythonStaticTypingParser
 
 
 # This class defines a complete generic visitor for a parse tree produced by PythonStaticTypingParser.
@@ -25,10 +25,22 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PythonStaticTypingParser#statement.
     def visitStatement(self, ctx: PythonStaticTypingParser.StatementContext):
         if ctx.expression_statement():
-            return self.visitExpression_statement(ctx.expression_statement())
-        if ctx.function_definition():
-            return self.visitFunction_definition(ctx.function_definition())
-        return self.visitChildren(ctx)
+            self.visitExpression_statement(ctx.expression_statement())
+        elif ctx.assignment_statement():
+            self.visitAssignment_statement(ctx.assignment_statement())
+        elif ctx.if_statement():
+            self.visitIf_statement(ctx.if_statement())
+        elif ctx.while_statement():
+            self.visitWhile_statement(ctx.while_statement())
+        elif ctx.for_statement():
+            self.visitFor_statement(ctx.for_statement())
+        elif ctx.function_definition():
+            self.visitFunction_definition(ctx.function_definition())
+        elif ctx.class_definition():
+            self.visitClass_definition(ctx.class_definition())
+        elif ctx.return_statement():
+            self.visitReturn_statement(ctx.return_statement())
+        return None  # We're not returning any value for individual statements
 
     # Visit a parse tree produced by PythonStaticTypingParser#function_statement.
     def visitFunction_statement(self, ctx: PythonStaticTypingParser.Function_statementContext):
@@ -38,11 +50,16 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
     def visitExpression_statement(self, ctx: PythonStaticTypingParser.Expression_statementContext):
         if ctx.expression():
             return self.visitExpression(ctx.expression())
-        return self.visitChildren(ctx)
+        return None  # We're not returning any value for expression statements
 
     # Visit a parse tree produced by PythonStaticTypingParser#assignment_statement.
+
     def visitAssignment_statement(self, ctx: PythonStaticTypingParser.Assignment_statementContext):
-        return self.visitChildren(ctx)
+        identifier = ctx.IDENTIFIER().getText()
+        type_annotation = ctx.type().getText() if ctx.type() else None
+        value = self.visitExpression(ctx.expression())
+        # Perform assignment handling here
+        return None
 
     # Visit a parse tree produced by PythonStaticTypingParser#if_statement.
     def visitIf_statement(self, ctx: PythonStaticTypingParser.If_statementContext):

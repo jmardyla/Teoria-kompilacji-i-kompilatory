@@ -1,7 +1,7 @@
 grammar PythonStaticTyping;
 
 // Lexer Rules
-// Tokes
+// Tokens
 NUMBER: '-'? ( '0' | [1-9] [0-9]* ) ( '.' [0-9]+ )? ( ('e' | 'E') [+-]? [0-9]+ )?;
 STRING: '"' ( '\\' . | ~["\\] )* '"' | '\'' ( '\\' . | ~['\\] )* '\'';
 TYPE_ANNOTATION: '->';
@@ -97,7 +97,7 @@ function_statement: expression_statement
 
 expression_statement : expression NEWLINE?;
 
-assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
+assignment_statement : IDENTIFIER EQUAL expression SEMI?;
 
 if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
@@ -142,5 +142,3 @@ type : INT
 // Tokens
 NEWLINE: '\r'? '\n';
 WS: [ \t]+ -> skip;
-
-
