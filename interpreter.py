@@ -61,6 +61,7 @@ class SimpleInterpreter(PythonStaticTypingVisitor):
         elif isinstance(op, ast.GtE):
             return left >= right
 
+
 def interpret(code):
     lexer = PythonStaticTypingLexer(InputStream(code))
     tokens = CommonTokenStream(lexer)
@@ -71,8 +72,6 @@ def interpret(code):
 
 # Example usage:
 code = """
-x = 10
-y = 20
 print(x + y)
 """
 

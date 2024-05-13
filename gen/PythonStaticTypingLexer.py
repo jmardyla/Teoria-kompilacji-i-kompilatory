@@ -1,4 +1,4 @@
-# Generated from C:/Users/janek/PycharmProjects/tkik/PythonStaticTyping.g4 by ANTLR 4.13.1
+# Generated from C:/Users/agamm/Teoria-kompilacji-i-kompilatory/PythonStaticTyping.g4 by ANTLR 4.13.1
 from antlr4 import *
 from io import StringIO
 import sys

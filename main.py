@@ -6,10 +6,6 @@ from gen.PythonStaticTypingVisitor import PythonStaticTypingVisitor
 
 input_text = """
 print('Hello world')
-liczba: int = 2*3
-
-
-result: int = 3
 """
 
 input_stream = InputStream(input_text)

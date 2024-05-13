@@ -68,7 +68,6 @@ DICT: 'dict';
 SET: 'set';
 IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
 
-
 INDENT: 'INDENT';
 DEDENT: 'DEDENT';
 //NEWLINE: '\n';
