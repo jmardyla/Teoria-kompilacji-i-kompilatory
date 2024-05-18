@@ -79,24 +79,28 @@ statements: NEWLINE* statement (NEWLINE+ statement)* NEWLINE*;
 
 statement: expression_statement
          | assignment_statement
+         | reassignment_statement
          | if_statement
          | while_statement
          | for_statement
          | function_definition
-         | class_definition
          | COMMENT;
 
 function_statement: expression_statement
          | assignment_statement
+         | reassignment_statement
          | if_statement
          | while_statement
          | for_statement
          | COMMENT
          | return_statement;
 
+
 expression_statement : expression NEWLINE?;
 
-assignment_statement : IDENTIFIER EQUAL expression SEMI?;
+assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
+
+reassignment_statement : IDENTIFIER EQUAL expression SEMI?;
 
 if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
@@ -136,7 +140,8 @@ type : INT
      | LIST
      | TUPLE
      | DICT
-     | SET;
+     | SET
+     | 'None';
 
 // Tokens
 NEWLINE: '\r'? '\n';

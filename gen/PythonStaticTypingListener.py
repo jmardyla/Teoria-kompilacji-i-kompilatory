@@ -1,4 +1,4 @@
-# Generated from C:/Users/agamm/Teoria-kompilacji-i-kompilatory/PythonStaticTyping.g4 by ANTLR 4.13.1
+# Generated from C:/Users/janek/PycharmProjects/tkik/PythonStaticTyping.g4 by ANTLR 4.13.1
 from antlr4 import *
 if "." in __name__:
     from .PythonStaticTypingParser import PythonStaticTypingParser
@@ -59,6 +59,15 @@ class PythonStaticTypingListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonStaticTypingParser#assignment_statement.
     def exitAssignment_statement(self, ctx:PythonStaticTypingParser.Assignment_statementContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonStaticTypingParser#reassignment_statement.
+    def enterReassignment_statement(self, ctx:PythonStaticTypingParser.Reassignment_statementContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#reassignment_statement.
+    def exitReassignment_statement(self, ctx:PythonStaticTypingParser.Reassignment_statementContext):
         pass
 
 

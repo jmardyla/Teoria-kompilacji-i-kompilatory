@@ -5,7 +5,16 @@ from gen.PythonStaticTypingParser import PythonStaticTypingParser
 from gen.PythonStaticTypingVisitor import PythonStaticTypingVisitor
 
 input_text = """
-print('Hello world')
+def do_something() -> None {
+    for i in range(10) {
+        print(i)
+    }
+}
+
+for j in range(3) {
+    do_something()
+    print("Done")
+}
 """
 
 input_stream = InputStream(input_text)
