@@ -41,8 +41,6 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
             self.visitFor_statement(ctx.for_statement())
         elif ctx.function_definition():
             self.visitFunction_definition(ctx.function_definition())
-        elif ctx.class_definition():
-            self.visitClass_definition(ctx.class_definition())
         # elif ctx.return_statement():
         #     self.visitReturn_statement(ctx.return_statement())
         return None  # We're not returning any value for individual statements
@@ -110,27 +108,26 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PythonStaticTypingParser#function_definition.
     def visitFunction_definition(self, ctx: PythonStaticTypingParser.Function_definitionContext):
         identifier = ctx.IDENTIFIER().getText()
+        params = []
+        if ctx.typed_parameters() is not None:
+            params = self.visitTyped_parameters(ctx.typed_parameters())
         if identifier not in self.functions:
-            self.functions[identifier] = ctx.function_statement()
+            self.functions[identifier] = (params, ctx.function_statement())
         else:
             raise ValueError(f"Variable {identifier} already defined")
         return None
 
     # Visit a parse tree produced by PythonStaticTypingParser#expression_list.
     def visitExpression_list(self, ctx: PythonStaticTypingParser.Expression_listContext):
-        return self.visitChildren(ctx)
+        return [self.visitExpression(expression) for expression in ctx.expression()]
 
     # Visit a parse tree produced by PythonStaticTypingParser#typed_parameters.
     def visitTyped_parameters(self, ctx: PythonStaticTypingParser.Typed_parametersContext):
-        return self.visitChildren(ctx)
+        return [self.visitTyped_parameter(param) for param in ctx.typed_parameter()]
 
     # Visit a parse tree produced by PythonStaticTypingParser#typed_parameter.
     def visitTyped_parameter(self, ctx: PythonStaticTypingParser.Typed_parameterContext):
-        return self.visitChildren(ctx)
-
-    # Visit a parse tree produced by PythonStaticTypingParser#class_definition.
-    def visitClass_definition(self, ctx: PythonStaticTypingParser.Class_definitionContext):
-        return self.visitChildren(ctx)
+        return ctx.IDENTIFIER().getText(), ctx.type_().getText()
 
     # Visit a parse tree produced by PythonStaticTypingParser#return_statement.
     def visitReturn_statement(self, ctx: PythonStaticTypingParser.Return_statementContext):
@@ -191,9 +188,25 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
     # Visit a parse tree produced by PythonStaticTypingParser#function_call.
     def visitFunction_call(self, ctx: PythonStaticTypingParser.Function_callContext):
         if ctx.IDENTIFIER().getText() in self.functions:
-            function = self.functions[ctx.IDENTIFIER().getText()]
+            function = self.functions[ctx.IDENTIFIER().getText()][1]
+            function_params = self.functions[ctx.IDENTIFIER().getText()][0]
+            for expected_param, _ in function_params:
+                self.variables[expected_param] = None
+
+            params_given = []
+            if ctx.expression_list() is not None:
+                params_given = self.visitExpression_list(ctx.expression_list())
+            if len(params_given) != len(function_params):
+                raise ValueError(f"Function {ctx.IDENTIFIER().getText()} expects {len(function_params)} parameters, {len(params_given)} were given")
+
+            for i in range(len(params_given)):
+                self.variables[function_params[i][0]] = params_given[i]
+
             for statement in function:
                 self.visitFunction_statement(statement)
+
+            for expected_param, _ in function_params:
+                self.variables.pop(expected_param)
         if ctx.IDENTIFIER().getText() == 'print':
             args = ctx.expression_list().expression()
             values = [self.visitExpression(arg) for arg in args]
