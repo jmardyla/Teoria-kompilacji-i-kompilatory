@@ -44,6 +44,24 @@ class PythonStaticTypingListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by PythonStaticTypingParser#function_statements.
+    def enterFunction_statements(self, ctx:PythonStaticTypingParser.Function_statementsContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#function_statements.
+    def exitFunction_statements(self, ctx:PythonStaticTypingParser.Function_statementsContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonStaticTypingParser#loop_statement.
+    def enterLoop_statement(self, ctx:PythonStaticTypingParser.Loop_statementContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#loop_statement.
+    def exitLoop_statement(self, ctx:PythonStaticTypingParser.Loop_statementContext):
+        pass
+
+
     # Enter a parse tree produced by PythonStaticTypingParser#expression_statement.
     def enterExpression_statement(self, ctx:PythonStaticTypingParser.Expression_statementContext):
         pass
@@ -134,15 +152,6 @@ class PythonStaticTypingListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by PythonStaticTypingParser#class_definition.
-    def enterClass_definition(self, ctx:PythonStaticTypingParser.Class_definitionContext):
-        pass
-
-    # Exit a parse tree produced by PythonStaticTypingParser#class_definition.
-    def exitClass_definition(self, ctx:PythonStaticTypingParser.Class_definitionContext):
-        pass
-
-
     # Enter a parse tree produced by PythonStaticTypingParser#return_statement.
     def enterReturn_statement(self, ctx:PythonStaticTypingParser.Return_statementContext):
         pass
@@ -158,6 +167,15 @@ class PythonStaticTypingListener(ParseTreeListener):
 
     # Exit a parse tree produced by PythonStaticTypingParser#expression.
     def exitExpression(self, ctx:PythonStaticTypingParser.ExpressionContext):
+        pass
+
+
+    # Enter a parse tree produced by PythonStaticTypingParser#operator.
+    def enterOperator(self, ctx:PythonStaticTypingParser.OperatorContext):
+        pass
+
+    # Exit a parse tree produced by PythonStaticTypingParser#operator.
+    def exitOperator(self, ctx:PythonStaticTypingParser.OperatorContext):
         pass
 
 

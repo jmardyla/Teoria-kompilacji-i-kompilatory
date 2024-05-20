@@ -95,6 +95,17 @@ function_statement: expression_statement
          | COMMENT
          | return_statement;
 
+function_statements: NEWLINE* function_statement (NEWLINE+ function_statement)* NEWLINE*;
+
+loop_statement: expression_statement
+         | assignment_statement
+         | reassignment_statement
+         | if_statement
+         | while_statement
+         | for_statement
+         | COMMENT
+         | return_statement;
+
 
 expression_statement : expression NEWLINE?;
 
@@ -102,13 +113,15 @@ assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
 
 reassignment_statement : IDENTIFIER EQUAL expression SEMI?;
 
-if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
+if_statement : IF (expression | OPEN_PAREN expression CLOSE_PAREN) OPEN_BRACE NEWLINE
+               function_statements CLOSE_BRACE NEWLINE?
+                (ELSE OPEN_BRACE NEWLINE function_statements CLOSE_BRACE)?;
 
 while_statement : WHILE expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
 for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statement (NEWLINE function_statement)* NEWLINE? CLOSE_BRACE;
+function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statements CLOSE_BRACE;
 
 expression_list : expression (COMMA expression)*;
 
@@ -116,16 +129,31 @@ typed_parameters : typed_parameter (COMMA typed_parameter)*;
 
 typed_parameter : IDENTIFIER COLON type;
 
-class_definition : CLASS IDENTIFIER OPEN_BRACE NEWLINE statements NEWLINE? CLOSE_BRACE;
-
 return_statement : RETURN expression? SEMI?;
 
-expression : primary ((PLUS | MINUS | STAR | SLASH | AMPERSAND | LESS | GREATER | PERCENT | EQEQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | PLUSEQUAL | MINEQUAL | STAREQUAL | SLASHEQUAL | PERCENTEQUAL) primary)*;
+expression : primary (operator primary)*;
+
+operator : PLUS
+         | MINUS
+         | STAR
+         | SLASH
+         | AMPERSAND
+         | LESS
+         | GREATER
+         | PERCENT
+         | EQEQUAL
+         | NOTEQUAL
+         | LESSEQUAL
+         | GREATEREQUAL
+         | PLUSEQUAL
+         | MINEQUAL
+         | STAREQUAL
+         | SLASHEQUAL
+         | PERCENTEQUAL;
 
 primary : IDENTIFIER
         | NUMBER
         | STRING
-        | OPEN_PAREN expression CLOSE_PAREN
         | OPEN_BRACKET expression_list CLOSE_BRACKET
         | OPEN_BRACE expression CLOSE_BRACE
         | function_call;
