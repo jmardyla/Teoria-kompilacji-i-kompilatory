@@ -5,15 +5,33 @@ from gen.PythonStaticTypingParser import PythonStaticTypingParser
 from gen.PythonStaticTypingVisitor import PythonStaticTypingVisitor
 
 input_text = """
-def do_something() -> None {
-    for i in range(10) {
-        print(i)
+print('Hello world')
+
+def do_something(param: str, num: int) -> int {
+    if (num % 2 == 0) {
+        sum: int = 0
+        for i in range(num) {
+            print(sum)
+            sum = sum + 1
+        }
+        return sum+10
     }
+    else {
+        print("ELSE")
+    }
+    print(param * num)
+    return 0
 }
 
-for j in range(3) {
-    do_something()
-    print("Done")
+result: int = do_something('test', 2)
+print(result)
+result = do_something('nieparzysta ', 3)
+print(result)
+
+var: int = 0
+while (var < 4) {
+    print(var * 10)
+    var = var + 1
 }
 """
 
