@@ -111,7 +111,9 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by PythonStaticTypingParser#while_statement.
     def visitWhile_statement(self, ctx: PythonStaticTypingParser.While_statementContext):
-        return self.visitChildren(ctx)
+        while self.visitExpression(ctx.expression()):
+            self.visitStatements(ctx.statements())
+        return None
 
     # Visit a parse tree produced by PythonStaticTypingParser#for_statement.
     def visitFor_statement(self, ctx: PythonStaticTypingParser.For_statementContext):
@@ -190,6 +192,14 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
             return left / right
         if operator == '%':
             return left % right
+        if operator == '<':
+            return left < right
+        if operator == '>':
+            return left > right
+        if operator == '<=':
+            return left <= right
+        if operator == '>=':
+            return left >= right
         if operator == '==':
             return left == right
         raise ValueError(f"Invalid operator {operator}")
@@ -213,7 +223,6 @@ class PythonStaticTypingVisitor(ParseTreeVisitor):
             if identifier in self.variables:
                 return self.variables[identifier]
             raise ValueError(f"Variable {identifier} not defined")
-        # return self.visitChildren(ctx)
 
     # Visit a parse tree produced by PythonStaticTypingParser#function_call.
     def visitFunction_call(self, ctx: PythonStaticTypingParser.Function_callContext):

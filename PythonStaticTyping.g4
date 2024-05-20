@@ -61,7 +61,7 @@ INT: 'int';
 STR: 'str';
 FLOAT: 'float';
 COMPLEX: 'complex';
-BOOLEAN: ('True' | 'False'); // Fixed token names
+BOOLEAN: 'bool';
 LIST: 'list';
 TUPLE: 'tuple';
 DICT: 'dict';
@@ -117,7 +117,7 @@ if_statement : IF (expression | OPEN_PAREN expression CLOSE_PAREN) OPEN_BRACE NE
                function_statements CLOSE_BRACE NEWLINE?
                 (ELSE OPEN_BRACE NEWLINE function_statements CLOSE_BRACE)?;
 
-while_statement : WHILE expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
+while_statement : WHILE (expression | OPEN_PAREN expression CLOSE_PAREN) OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
 for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
