@@ -9,6 +9,20 @@ from gen.PythonStaticTypingLexer import PythonStaticTypingLexer
 from gen.PythonStaticTypingParser import PythonStaticTypingParser
 from gen.PythonStaticTypingVisitor import PythonStaticTypingVisitor
 from antlr4.error.Errors import RecognitionException, InputMismatchException
+from antlr4.error.ErrorListener import ErrorListener
+
+class ANTLRConsoleErrorListener(ErrorListener):
+    def __init__(self, result_text_widget):
+        super(ANTLRConsoleErrorListener, self).__init__()
+        self.result_text_widget = result_text_widget
+
+    def syntaxError(self, recognizer, offendingSymbol, line, column, msg, e):
+        if offendingSymbol.text.startswith("print(") and not offendingSymbol.text.endswith(")"):
+            error_message = f"Syntax Error at line {line}, column {column}: Unclosed parenthesis in print statement\n"
+        else:
+            error_message = f"Syntax Error at line {line}, column {column}: {msg}\n"
+        self.result_text_widget.tag_config("error", foreground="red")
+        self.result_text_widget.insert(tk.END, error_message, "error")
 
 class CodeExecutorApp:
     def __init__(self, root):
@@ -58,31 +72,42 @@ class CodeExecutorApp:
     def execute_code(self):
         code = self.text_area.get("1.0", tk.END)
 
-        # Capture standard output and errors
+        # Przechwycenie standardowego wyjścia i błędów
         stdout_backup = sys.stdout
         stderr_backup = sys.stderr
         sys.stdout = io.StringIO()
         sys.stderr = io.StringIO()
 
         try:
-            # Parse code using ANTLR
+            # Analiza kodu za pomocą ANTLR
             input_stream = InputStream(code)
             lexer = PythonStaticTypingLexer(input_stream)
             token_stream = CommonTokenStream(lexer)
             parser = PythonStaticTypingParser(token_stream)
+
+            # Dodajemy własny handler do wyświetlania błędów
+            parser.removeErrorListeners()
+            parser.addErrorListener(ANTLRConsoleErrorListener(self.result_text))
+
             tree = parser.program()
 
+            # Wykonanie kodu za pomocą odwiedzającego
             visitor = PythonStaticTypingVisitor()
             visitor.visitProgram(tree)
 
-            # Get result from captured output
+            # Pobranie wyniku z przechwyconego wyjścia
             result = sys.stdout.getvalue()
 
-            # Clear result text area
-            self.result_text.delete("1.0", tk.END)
+            # Pobranie błędów z przechwyconego wyjścia błędów
+            errors = sys.stderr.getvalue()
 
-            # Display result
-            self.result_text.insert(tk.END, result)
+            if errors:
+                # Jeśli wystąpiły błędy, wyświetl je na czerwono
+                self.result_text.tag_config("error", foreground="red")
+                self.result_text.insert(tk.END, errors, "error")
+            else:
+                # W przeciwnym razie wyświetl wynik
+                self.result_text.insert(tk.END, result)
         except InputMismatchException as ime:
             error_line = ime.offendingToken.line if ime.offendingToken else -1
             error_message = "Mismatched input"
@@ -97,7 +122,10 @@ class CodeExecutorApp:
             current_line_number = int(self.text_area.index(tk.INSERT).split('.')[0])
             self.result_text.delete("1.0", tk.END)
             self.result_text.insert(tk.END, f"Error in line {current_line_number}: {e}\n", "error")
+            # Also capture the full traceback
+            self.result_text.insert(tk.END, "\n" + traceback.format_exc(), "error")
         finally:
+            # Przywrócenie standardowego wyjścia i błędów
             sys.stdout = stdout_backup
             sys.stderr = stderr_backup
 
