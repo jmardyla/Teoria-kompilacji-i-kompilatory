@@ -9,6 +9,7 @@ from gen.PythonStaticTypingLexer import PythonStaticTypingLexer
 from gen.PythonStaticTypingParser import PythonStaticTypingParser
 from gen.PythonStaticTypingVisitor import PythonStaticTypingVisitor
 from antlr4.error.Errors import RecognitionException, InputMismatchException
+
 from antlr4.error.ErrorListener import ErrorListener
 
 class ANTLRConsoleErrorListener(ErrorListener):
@@ -69,14 +70,14 @@ class CodeExecutorApp:
     def execute_code(self):
         code = self.text_area.get("1.0", tk.END)
 
-        # Przechwycenie standardowego wyjścia i błędów
+        # Capture standard output and errors
         stdout_backup = sys.stdout
         stderr_backup = sys.stderr
         sys.stdout = io.StringIO()
         sys.stderr = io.StringIO()
 
         try:
-            # Analiza kodu za pomocą ANTLR
+            # Parse code using ANTLR
             input_stream = InputStream(code)
             lexer = PythonStaticTypingLexer(input_stream)
             token_stream = CommonTokenStream(lexer)
@@ -92,7 +93,7 @@ class CodeExecutorApp:
             visitor = PythonStaticTypingVisitor()
             visitor.visitProgram(tree)
 
-            # Pobranie wyniku z przechwyconego wyjścia
+            # Get result from captured output
             result = sys.stdout.getvalue()
 
             # Pobranie błędów z przechwyconego wyjścia błędów
@@ -105,6 +106,12 @@ class CodeExecutorApp:
             else:
                 # W przeciwnym razie wyświetl wynik
                 self.result_text.insert(tk.END, result)
+
+            # Clear result text area
+            self.result_text.delete("1.0", tk.END)
+
+            # Display result
+            self.result_text.insert(tk.END, result)
         except InputMismatchException as ime:
             error_line = ime.offendingToken.line if ime.offendingToken else -1
             error_message = "Mismatched input"
@@ -122,7 +129,6 @@ class CodeExecutorApp:
             # Also capture the full traceback
             self.result_text.insert(tk.END, "\n" + traceback.format_exc(), "error")
         finally:
-            # Przywrócenie standardowego wyjścia i błędów
             sys.stdout = stdout_backup
             sys.stderr = stderr_backup
 

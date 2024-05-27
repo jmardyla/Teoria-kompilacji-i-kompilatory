@@ -15,9 +15,17 @@
     <li>Wykorzystywany generator parserów: ANTLR</li>
 </ul>
 
+## Opis
+#### Język:
+- obsługuje liczby całkowite, liczby zmiennoprzecinkowe oraz stringi
+- umożliwa deklarowanie i wywoływanie funkcji, ify else, pętle for oraz while
+- wymusza użycie adnotacji typu podczas deklarowania zmiennej oraz funkcji
+- wskazuje dodatkowe wystąpienia błędów, np. użycie niezdefiniowanej funkcji, użycie niezadeklarowanej zmiennej, podanie niewłaściwej ilości parametrów w wywołaniu funkcji
+
 ## Tokeny
 ```g4
 // Tokes
+// Tokens
 NUMBER: '-'? ( '0' | [1-9] [0-9]* ) ( '.' [0-9]+ )? ( ('e' | 'E') [+-]? [0-9]+ )?;
 STRING: '"' ( '\\' . | ~["\\] )* '"' | '\'' ( '\\' . | ~['\\] )* '\'';
 TYPE_ANNOTATION: '->';
@@ -30,7 +38,7 @@ MINUS: '-';
 STAR: '*';
 SLASH: '/';
 VBAR: '|';
-AMPERSAND: '&'; 
+AMPERSAND: '&'; // Fixed token name
 LESS: '<';
 GREATER: '>';
 EQUAL: '=';
@@ -77,15 +85,12 @@ INT: 'int';
 STR: 'str';
 FLOAT: 'float';
 COMPLEX: 'complex';
-BOOLEAN: ('True' | 'False'); 
+BOOLEAN: 'bool';
 LIST: 'list';
 TUPLE: 'tuple';
 DICT: 'dict';
 SET: 'set';
 IDENTIFIER: [a-zA-Z_][a-zA-Z0-9_]*;
-
-INDENT: 'INDENT';
-DEDENT: 'DEDENT';
 
 NEWLINE: '\r'? '\n';
 WS: [ \t]+ -> skip;
@@ -98,32 +103,41 @@ statements: NEWLINE* statement (NEWLINE+ statement)* NEWLINE*;
 
 statement: expression_statement
          | assignment_statement
+         | reassignment_statement
          | if_statement
          | while_statement
          | for_statement
          | function_definition
-         | class_definition
          | COMMENT;
 
 function_statement: expression_statement
          | assignment_statement
+         | reassignment_statement
          | if_statement
          | while_statement
          | for_statement
          | COMMENT
          | return_statement;
 
+function_statements: NEWLINE* function_statement (NEWLINE+ function_statement)* NEWLINE*;
+
+function_call : IDENTIFIER OPEN_PAREN expression_list? CLOSE_PAREN;
+
 expression_statement : expression NEWLINE?;
 
-assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
+assignment_statement : IDENTIFIER COLON type EQUAL expression;
 
-if_statement : IF expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
+reassignment_statement : IDENTIFIER EQUAL expression;
 
-while_statement : WHILE expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
+if_statement : IF (expression | OPEN_PAREN expression CLOSE_PAREN) OPEN_BRACE NEWLINE
+               function_statements CLOSE_BRACE NEWLINE?
+                (ELSE OPEN_BRACE NEWLINE function_statements CLOSE_BRACE)?;
+
+while_statement : WHILE (expression | OPEN_PAREN expression CLOSE_PAREN) OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
 for_statement : FOR IDENTIFIER IN expression OPEN_BRACE NEWLINE statements CLOSE_BRACE;
 
-function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statement (NEWLINE function_statement)* NEWLINE? CLOSE_BRACE;
+function_definition : DEF IDENTIFIER OPEN_PAREN typed_parameters? CLOSE_PAREN TYPE_ANNOTATION type OPEN_BRACE NEWLINE function_statements CLOSE_BRACE;
 
 expression_list : expression (COMMA expression)*;
 
@@ -131,21 +145,34 @@ typed_parameters : typed_parameter (COMMA typed_parameter)*;
 
 typed_parameter : IDENTIFIER COLON type;
 
-class_definition : CLASS IDENTIFIER OPEN_BRACE NEWLINE statements NEWLINE? CLOSE_BRACE;
+return_statement : RETURN expression?;
 
-return_statement : RETURN expression? SEMI?;
+expression : primary (operator primary)*;
 
-expression : primary ((PLUS | MINUS | STAR | SLASH | AMPERSAND | LESS | GREATER | PERCENT | EQEQUAL | NOTEQUAL | LESSEQUAL | GREATEREQUAL | PLUSEQUAL | MINEQUAL | STAREQUAL | SLASHEQUAL | PERCENTEQUAL) primary)*;
+operator : PLUS
+         | MINUS
+         | STAR
+         | SLASH
+         | AMPERSAND
+         | LESS
+         | GREATER
+         | PERCENT
+         | EQEQUAL
+         | NOTEQUAL
+         | LESSEQUAL
+         | GREATEREQUAL
+         | PLUSEQUAL
+         | MINEQUAL
+         | STAREQUAL
+         | SLASHEQUAL
+         | PERCENTEQUAL;
 
 primary : IDENTIFIER
         | NUMBER
         | STRING
-        | OPEN_PAREN expression CLOSE_PAREN
         | OPEN_BRACKET expression_list CLOSE_BRACKET
         | OPEN_BRACE expression CLOSE_BRACE
         | function_call;
-
-function_call : IDENTIFIER OPEN_PAREN expression_list? CLOSE_PAREN;
 
 type : INT
      | STR
@@ -155,7 +182,8 @@ type : INT
      | LIST
      | TUPLE
      | DICT
-     | SET;
+     | SET
+     | 'None';
 ```
 ## Example parse tree
 ```
@@ -187,4 +215,13 @@ result: int = do_something('test', 3)
 </ul>
 </details>
 
-## TBA
+## Instrukcja obsługi: 
+- sklonuj repozutorium 
+<code>git clone https://github.com/jmardyla/Teoria-kompilacji-i-kompilatory.git</code>
+- otwórz projekt w IDE 
+- uruchom plik main.py
+<img width="auto" src="./assets/executor.png" alt="executor" title="executor"/>
+
+## przykładowe użycie 
+<img width="auto" src="./assets/przyklad1.png" alt="executor" title="executor"/>
+<img width="auto" src="./assets/przyklad2Error.png" alt="executor" title="executor"/>
