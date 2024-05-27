@@ -114,21 +114,13 @@ function_statement: expression_statement
 
 function_statements: NEWLINE* function_statement (NEWLINE+ function_statement)* NEWLINE*;
 
-loop_statement: expression_statement
-         | assignment_statement
-         | reassignment_statement
-         | if_statement
-         | while_statement
-         | for_statement
-         | COMMENT
-         | return_statement;
-
+function_call : IDENTIFIER OPEN_PAREN expression_list? CLOSE_PAREN;
 
 expression_statement : expression NEWLINE?;
 
-assignment_statement : IDENTIFIER COLON type EQUAL expression SEMI?;
+assignment_statement : IDENTIFIER COLON type EQUAL expression;
 
-reassignment_statement : IDENTIFIER EQUAL expression SEMI?;
+reassignment_statement : IDENTIFIER EQUAL expression;
 
 if_statement : IF (expression | OPEN_PAREN expression CLOSE_PAREN) OPEN_BRACE NEWLINE
                function_statements CLOSE_BRACE NEWLINE?
@@ -146,7 +138,7 @@ typed_parameters : typed_parameter (COMMA typed_parameter)*;
 
 typed_parameter : IDENTIFIER COLON type;
 
-return_statement : RETURN expression? SEMI?;
+return_statement : RETURN expression?;
 
 expression : primary (operator primary)*;
 
@@ -174,8 +166,6 @@ primary : IDENTIFIER
         | OPEN_BRACKET expression_list CLOSE_BRACKET
         | OPEN_BRACE expression CLOSE_BRACE
         | function_call;
-
-function_call : IDENTIFIER OPEN_PAREN expression_list? CLOSE_PAREN;
 
 type : INT
      | STR
