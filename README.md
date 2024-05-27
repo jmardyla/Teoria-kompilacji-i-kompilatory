@@ -187,4 +187,10 @@ result: int = do_something('test', 3)
 </ul>
 </details>
 
-## TBA
+## Instrukcja obsługi: 
+- sklonuj repozutorium 
+<code>git clone https://github.com/jmardyla/Teoria-kompilacji-i-kompilatory.git</code>
+- otwórz projekt w IDE 
+- uruchom plik main.py
+<img width="auto" src="./assets/executor.png" alt="executor" title="executor"/>
+
