@@ -20,7 +20,7 @@
 - obsługuje liczby całkowite, liczby zmiennoprzecinkowe oraz stringi
 - umożliwa deklarowanie i wywoływanie funkcji, ify else, pętle for oraz while
 - wymusza użycie adnotacji typu podczas deklarowania zmiennej oraz funkcji
-- wskazuje dodatkowe wystąpienia błędów, np. użycie niezadeklarowanej zmiennej, podanie niewłaściwej ilości parametrów w wywołaniu funkcji
+- wskazuje dodatkowe wystąpienia błędów, np. użycie niezdefiniowanej funkcji, użycie niezadeklarowanej zmiennej, podanie niewłaściwej ilości parametrów w wywołaniu funkcji
 
 ## Tokeny
 ```g4
