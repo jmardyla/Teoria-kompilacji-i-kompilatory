@@ -194,3 +194,6 @@ result: int = do_something('test', 3)
 - uruchom plik main.py
 <img width="auto" src="./assets/executor.png" alt="executor" title="executor"/>
 
+## przykładowe użycie 
+<img width="auto" src="./assets/przyklad1.png" alt="executor" title="executor"/>
+<img width="auto" src="./assets/przyklad2Error.png" alt="executor" title="executor"/>
